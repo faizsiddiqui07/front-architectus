@@ -49,7 +49,7 @@ const ExpertiseDetails = () => {
           });
           setData(response.data.data);
           setLoading(false);
-        }, 400); // Simulated delay of 1.5 seconds
+        }, 100); // Simulated delay of 1.5 seconds
       } catch (err) {
         setError("Error fetching project details. Please try again later.");
         setLoading(false);

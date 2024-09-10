@@ -41,7 +41,7 @@ const ExpertisePage = () => {
             setExpertise([]);
           }
           setLoading(false);
-        }, 400); // Simulated delay of 1.5 seconds
+        }, 100); // Simulated delay of 1.5 seconds
       } catch (err) {
         setError("Error fetching expertise. Please try again later.");
         setLoading(false);

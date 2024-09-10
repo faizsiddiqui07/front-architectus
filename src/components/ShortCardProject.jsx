@@ -8,7 +8,7 @@ const ShortCardProject = ({ expertise }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false); // Set loading to false after 1.5 seconds
-    }, 400);
+    }, 100);
 
     return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, []);

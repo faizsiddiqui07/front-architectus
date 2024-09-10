@@ -30,7 +30,7 @@ const ProjectDetails = () => {
         });
         setData(response.data.data);
         setLoading(false);
-      }, 400); // 2-second delay
+      }, 100); // 2-second delay
     } catch (error) {
       setError("Error fetching project details. Please try again later.");
       setLoading(false);
