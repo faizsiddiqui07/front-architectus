@@ -65,7 +65,7 @@ const ProjectDetails = () => {
 
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
-      <div className="sticky top-0 bg-[#1a1a1a] border-t border-[#3939399f] z-10">
+      <div className="sticky -top-1 bg-[#1a1a1a] border-t border-[#3939399f] z-10">
         <div className="w-full h-[75px] px-4 lg:px-14 flex justify-between items-center">
           {data && <Breadcrumb one={data.projectName} two="Projects" />}
         </div>
@@ -193,6 +193,7 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
           navigation
           spaceBetween={50}
           slidesPerView={1}
+          loop={true}
         >
           {images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
