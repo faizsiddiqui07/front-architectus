@@ -64,19 +64,27 @@ const ExpertisePage = () => {
 };
 
 const ExpertiseCard = ({ expertise }) => (
-  <Link to={`/expertise/${expertise.slug}`} className="mt-7 w-full sm:w-[49%]">
-    <div className="bg-white w-full h-[310px] shadow-lg rounded-md overflow-hidden">
-      <img
-        src={expertise.expertiseImage?.[0]}
-        alt={expertise.expertiseName}
-        className="w-full h-60 object-cover"
-      />
-      <div className="p-4">
-        <span className="text-[20px] text-[#333333] font-normal mt-2">
+  <Link to={`/expertise/${expertise.slug}`} className="mt-7 w-full sm:w-[49%] lg:w-[33%]">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+      <div className="relative">
+        <img
+          src={expertise.expertiseImage?.[0]}
+          alt={expertise.expertiseName}
+          className="w-full h-full object-cover transition-transform transform hover:scale-105 duration-300"
+        />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5) 100%)"
+          }}
+        ></div>
+      </div>
+      <div className="p-4 lg:p-6">
+        <h3 className="text-[16px] text-center xs:text-start xs:text-lg lg:text-xl font-medium text-gray-800">
           {expertise.expertiseName.length > 70
             ? `${expertise.expertiseName.slice(0, 70)}...`
             : expertise.expertiseName}
-        </span>
+        </h3>
       </div>
     </div>
   </Link>

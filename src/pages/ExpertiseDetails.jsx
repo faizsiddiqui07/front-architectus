@@ -46,9 +46,9 @@ const ExpertiseDetails = () => {
       </div>
 
       <div>
-        <div className="w-full h-[400px] md:h-[500px] relative z-0">
+        <div className="w-full h-full relative z-0">
           <img
-            src={data?.expertiseImage?.[0]}
+            src={data?.expertiseImage?.[0]} 
             className="w-full h-full object-cover"
             alt={data?.expertiseName}
           />
