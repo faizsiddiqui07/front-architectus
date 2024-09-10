@@ -146,7 +146,7 @@ const ProjectHeader = ({ project }) => (
       }}
     ></div>
     {/* Header Content */}
-    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-14 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
+    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-14 flex flex-col-reverse md:flex-row justify-between items-center gap-4 md:gap-8">
       <h2 className="text-white text-center md:text-left text-lg sm:text-xl md:text-2xl font-medium">
         {project.projectName}
       </h2>

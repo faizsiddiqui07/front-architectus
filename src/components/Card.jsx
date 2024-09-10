@@ -19,17 +19,17 @@ const Card = ({ project, highlightedText }) => {
 
   return (
     <Link to={`/project/${project.slug}`} className="block w-full" onClick={scrollTop}>
-      <div className="bg-white h-[360px] shadow-lg rounded-md overflow-hidden">
+      <div className="bg-white shadow-lg rounded-md overflow-hidden">
         <img
           src={project.projectImage[0]}
           alt={project.projectName}
-          className="w-full h-60 object-cover"
+          className="w-full h-full object-cover"
         />
-        <div className="p-4">
+        <div className="p-3">
           <p className="text-sm font-semibold text-gray-600">
             {project.completionDate.split("-", 1)}  {project.projectAddress}
           </p>
-          <h5 className="text-lg text-[#333333] font-medium mt-2">
+          <h5 className="text-lg text-[#333333] font-medium ">
             {/* Apply the highlightText function to the project name */}
             {highlightText(
               project.projectName.length > 70
