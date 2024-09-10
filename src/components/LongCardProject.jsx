@@ -28,7 +28,7 @@ const LongCardProject = ({ to, image, heading, projectType, component }) => {
               <div className="relative">
                 <img
                   src={image}
-                  className="h-[330px] w-full object-cover hover:scale-105 transition-all duration-300 "
+                  className="h-[230px] sm:h-[330px] w-full object-cover hover:scale-105 transition-all duration-300 "
                   alt={`Project image for ${heading}`}
                 />
                 <div

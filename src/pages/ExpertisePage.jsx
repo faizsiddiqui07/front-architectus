@@ -4,6 +4,22 @@ import axios from "axios";
 import { base_url } from "../config/config";
 import { Link } from "react-router-dom";
 
+// Skeleton components
+const SkeletonCard = () => (
+  <div className="mt-7 w-full sm:w-[49%] lg:w-[33%] animate-pulse">
+    <div className="bg-gray-300 rounded-lg h-[250px]"></div>
+    <div className="mt-4 bg-gray-300 h-6 w-3/4 mx-auto rounded"></div>
+  </div>
+);
+
+const SkeletonHeader = () => (
+  <div className="relative w-full h-[350px] xs:h-[400px] md:h-[600px] bg-gray-300 animate-pulse">
+    <h2 className="absolute bottom-7 text-gray-500 text-3xl sm:text-4xl px-4 lg:px-14 text-center sm:text-start w-full">
+      Loading...
+    </h2>
+  </div>
+);
+
 const ExpertisePage = () => {
   const [expertise, setExpertise] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,18 +28,21 @@ const ExpertisePage = () => {
   useEffect(() => {
     const getExpertise = async () => {
       try {
-        const response = await axios.get(`${base_url}/api/getExpertise`);
-        const data = response.data.data;
+        // Simulate a delayed response using setTimeout
+        setTimeout(async () => {
+          const response = await axios.get(`${base_url}/api/getExpertise`);
+          const data = response.data.data;
 
-        if (data && Array.isArray(data)) {
-          setExpertise(data);
-        } else {
-          setError("Unexpected API response.");
-          setExpertise([]);
-        }
+          if (data && Array.isArray(data)) {
+            setExpertise(data);
+          } else {
+            setError("Unexpected API response.");
+            setExpertise([]);
+          }
+          setLoading(false);
+        }, 1500); // Simulated delay of 1.5 seconds
       } catch (err) {
         setError("Error fetching expertise. Please try again later.");
-      } finally {
         setLoading(false);
       }
     };
@@ -32,7 +51,18 @@ const ExpertisePage = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-white text-center mt-10">Loading expertise...</p>;
+    return (
+      <div className="w-full mb-36">
+        <SkeletonHeader />
+        <main className="px-4 lg:px-14 my-10">
+          <div className="w-full flex flex-wrap justify-between items-center">
+            {[...Array(6)].map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </div>
+        </main>
+      </div>
+    );
   }
 
   if (error) {
