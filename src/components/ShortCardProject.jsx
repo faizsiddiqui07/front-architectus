@@ -14,7 +14,7 @@ const ShortCardProject = ({ expertise }) => {
   }, []);
 
   return (
-    <div className="mt-4 w-full sm:w-[49%] lg:w-[32.5%]">
+    <div className="mt-4 w-full sm:w-[49%] lg:w-[32.5%]" onClick={scrollTop}>
       <div className="w-full overflow-hidden rounded-md">
         {loading ? (
           <div className="animate-pulse">
@@ -22,7 +22,7 @@ const ShortCardProject = ({ expertise }) => {
             <div className="h-6 w-3/4 bg-gray-600 mt-4 mx-6"></div> {/* Skeleton for title */}
           </div>
         ) : (
-          <Link to={`/expertise/${expertise.slug}`} onClick={scrollTop}>
+          <Link to={`/expertise/${expertise.slug}`}>
             <div className="relative">
               <img
                 src={expertise.expertiseImage}

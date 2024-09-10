@@ -5,6 +5,34 @@ import { base_url } from "../config/config";
 import htmlParser from "html-react-parser";
 import Breadcrumb from "../components/BreadCrumb";
 
+// Skeleton components for loading state
+const SkeletonHeader = () => (
+  <div className="relative w-full bg-gray-800 animate-pulse h-[550px] rounded-md">
+    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-14 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
+      <div className="bg-gray-600 h-8 w-1/3 rounded-md"></div>
+    </div>
+  </div>
+);
+
+const SkeletonDescription = () => (
+  <div className="px-4 lg:px-14 mt-10 mb-32">
+    <div className="mx-auto w-full sm:w-3/4 lg:w-2/4">
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+      <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
+    </div>
+  </div>
+);
+
 const ExpertiseDetails = () => {
   const { slug } = useParams(); // Destructuring params for readability
   const [data, setData] = useState(null);
@@ -14,15 +42,18 @@ const ExpertiseDetails = () => {
   useEffect(() => {
     const fetchExpertiseDetails = async () => {
       try {
-        const response = await axios.post(`${base_url}/api/expertiseDetails`, {
-          slug,
-        });
-        setData(response.data.data);
+        // Simulate a delayed response using setTimeout
+        setTimeout(async () => {
+          const response = await axios.post(`${base_url}/api/expertiseDetails`, {
+            slug,
+          });
+          setData(response.data.data);
+          setLoading(false);
+        }, 1500); // Simulated delay of 1.5 seconds
       } catch (err) {
         setError("Error fetching project details. Please try again later.");
-        console.error("Error fetching project details:", err);
-      } finally {
         setLoading(false);
+        console.error("Error fetching project details:", err);
       }
     };
 
@@ -30,7 +61,12 @@ const ExpertiseDetails = () => {
   }, [slug]);
 
   if (loading) {
-    return <p className="text-white">Loading project details...</p>;
+    return (
+      <div className="w-full relative top-[65px] sm:top-[73px]">
+        <SkeletonHeader />
+        <SkeletonDescription />
+      </div>
+    );
   }
 
   if (error) {
@@ -48,15 +84,14 @@ const ExpertiseDetails = () => {
       <div>
         <div className="w-full h-full relative z-0">
           <img
-            src={data?.expertiseImage?.[0]} 
+            src={data?.expertiseImage?.[0]}
             className="w-full h-full object-cover"
             alt={data?.expertiseName}
           />
           <div
             className="absolute inset-0"
             style={{
-              background:
-                "linear-gradient(to bottom, transparent 65%, black 100%)",
+              background: "linear-gradient(to bottom, transparent 65%, black 100%)",
             }}
           ></div>
           <div className="w-full absolute bottom-10 px-4 lg:px-14 flex flex-col md:flex-row justify-between items-center gap-5">
