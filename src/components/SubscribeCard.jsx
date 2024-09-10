@@ -20,7 +20,7 @@ const SubscribeCard = () => {
     // Simulate loading time (e.g., fetching data or API call)
     const timer = setTimeout(() => {
       setLoading(false); // Set loading to false after 2 seconds
-    }, 1500);
+    }, 400);
 
     return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, []);
