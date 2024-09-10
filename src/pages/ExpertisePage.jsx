@@ -3,6 +3,7 @@ import SliderMenuImage from "../assets/images/sliderOpen.jpg";
 import axios from "axios";
 import { base_url } from "../config/config";
 import { Link } from "react-router-dom";
+import scrollTop from "../helpers/scrollTop";
 
 // Skeleton components
 const SkeletonCard = () => (
@@ -40,7 +41,7 @@ const ExpertisePage = () => {
             setExpertise([]);
           }
           setLoading(false);
-        }, 1500); // Simulated delay of 1.5 seconds
+        }, 400); // Simulated delay of 1.5 seconds
       } catch (err) {
         setError("Error fetching expertise. Please try again later.");
         setLoading(false);
@@ -94,7 +95,7 @@ const ExpertisePage = () => {
 };
 
 const ExpertiseCard = ({ expertise }) => (
-  <Link to={`/expertise/${expertise.slug}`} className="mt-7 w-full sm:w-[49%] lg:w-[33%]">
+  <Link to={`/expertise/${expertise.slug}`} onClick={scrollTop} className="mt-7 w-full sm:w-[49%] lg:w-[33%]">
     <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       <div className="relative">
         <img

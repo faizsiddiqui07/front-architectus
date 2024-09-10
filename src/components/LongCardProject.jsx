@@ -9,7 +9,7 @@ const LongCardProject = ({ to, image, heading, projectType, component }) => {
     // Simulate loading process
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); 
+    }, 400); 
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);

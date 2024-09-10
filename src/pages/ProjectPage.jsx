@@ -62,7 +62,7 @@ const ProjectPage = () => {
     // Simulate loading for 2 seconds
     setTimeout(() => {
       getProjects();
-    }, 1000);
+    }, 400);
   }, []);
 
   useEffect(() => {
