@@ -3,13 +3,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { base_url } from "../config/config";
 import Breadcrumb from "../components/BreadCrumb";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import RelatedProject from "../components/RelatedProject";
 import SwiperCore from "swiper";
-import htmlParser from 'html-react-parser';
+import htmlParser from "html-react-parser";
 
 // Install Swiper modules
 SwiperCore.use([Navigation]);
@@ -73,7 +73,7 @@ const ProjectDetails = () => {
 
       <ProjectHeader project={data} />
 
-      <div className="w-full h-full my-16">
+      <div className={`w-full h-full ${data.description ?"my-16":"my-6"}`}>
         {data?.description && (
           <div className="text-white px-4 lg:px-14 w-full sm:w-3/4 lg:w-2/4 font-extralight text-justify mx-auto">
             {htmlParser(data?.description)}
@@ -81,7 +81,13 @@ const ProjectDetails = () => {
         )}
       </div>
 
-      <ProjectImageGallery images={data?.projectImage} onImageClick={handleImageClick} />
+      <div className="px-4 lg:px-14 w-full ">
+        <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center">Gallery</h2>
+        <ProjectImageGallery
+          images={data?.projectImage}
+          onImageClick={handleImageClick}
+        />
+      </div>
 
       {selectedImageIndex !== null && (
         <ImageSliderPopup
@@ -125,7 +131,10 @@ const SkeletonDescription = () => (
 const SkeletonImageGallery = () => (
   <div className="px-4 lg:px-14 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
     {[...Array(6)].map((_, index) => (
-      <div key={index} className="w-full h-64 bg-gray-700 animate-pulse rounded-md"></div>
+      <div
+        key={index}
+        className="w-full h-64 bg-gray-700 animate-pulse rounded-md"
+      ></div>
     ))}
   </div>
 );
@@ -159,17 +168,18 @@ const ProjectHeader = ({ project }) => (
 
 // Image Gallery Component (excluding first image)
 const ProjectImageGallery = ({ images, onImageClick }) => (
-  <div className="px-4 lg:px-14 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-    {images && images.slice(1).map((image, index) => (
-      <div key={index} className="w-full h-full relative cursor-pointer">
-        <img
-          src={image}
-          alt={`Project image ${index}`}
-          className="w-full h-full object-cover rounded-lg"
-          onClick={() => onImageClick(index + 1)}  // Adjust index for popup
-        />
-      </div>
-    ))}
+  <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+    {images &&
+      images.slice(1).map((image, index) => (
+        <div key={index} className="w-full h-full relative cursor-pointer">
+          <img
+            src={image}
+            alt={`Project image ${index}`}
+            className="w-full h-full object-cover rounded-lg"
+            onClick={() => onImageClick(index + 1)} // Adjust index for popup
+          />
+        </div>
+      ))}
   </div>
 );
 

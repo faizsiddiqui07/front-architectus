@@ -128,7 +128,7 @@ const SubscribeCard = () => {
             <button
               type="submit"
               className={`w-full bg-gray-500 rounded-full py-2 outline-none text-white hover:bg-gray-600 ${submitting ? 'cursor-wait' : ''}`}
-              disabled={submitting} // Disable button while submitting
+              disabled={submitting}
             >
               {submitting ? 'Submitting...' : 'Subscribe'}
             </button>
