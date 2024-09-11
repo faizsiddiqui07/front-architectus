@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import lightLogo2 from "../assets/logo/light-logo-2.png";
 import { menuLinks, socialLinks } from "../data";
 import { FaArrowUp } from "react-icons/fa";
+import scrollTop from "../helpers/scrollTop";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,7 +23,7 @@ const Footer = () => {
       <div className="flex justify-between items-center flex-col lg:flex-row pb-10 gap-10 lg:gap-0">
         <div className="flex items-center lg:items-start flex-col gap-8">
           <div>
-            <Link to={"/"}>
+            <Link to={"/"} onClick={scrollTop}>
               <img src={lightLogo2} className="w-56" alt="Architectus Bureau Logo" />
             </Link>
           </div>
@@ -33,6 +34,7 @@ const Footer = () => {
                 <Link
                   key={index}
                   to={item.url}
+                  onClick={scrollTop}
                   className="text-white text-center hover:text-slate-300 text-base"
                 >
                   {item.title}
