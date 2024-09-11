@@ -15,6 +15,8 @@ const Home = () => {
   useEffect(() => {
     const fetchExpertise = async () => {
       try {
+        console.log("urls",base_url);
+        
         const response = await axios.get(`${base_url}/api/getExpertise`);
         setExpertise(response.data.data.slice(0, 6)); // Limit to 6 items
       } catch (err) {
