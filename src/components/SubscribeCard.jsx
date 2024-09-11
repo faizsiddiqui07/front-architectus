@@ -14,10 +14,10 @@ const SubscribeCard = () => {
     phone: "",
   });
 
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); // Loading state for initial render
+  const [submitting, setSubmitting] = useState(false); // Loading state for submission
 
   useEffect(() => {
-    // Simulate loading time (e.g., fetching data or API call)
     const timer = setTimeout(() => {
       setLoading(false); // Set loading to false after 2 seconds
     }, 400);
@@ -64,6 +64,8 @@ const SubscribeCard = () => {
 
     if (!validate()) return;
 
+    setSubmitting(true); // Set submitting state to true
+
     try {
       const response = await axios.post(`${base_url}/api/subscribe`, data, {
         withCredentials: true,
@@ -79,11 +81,13 @@ const SubscribeCard = () => {
     } catch (error) {
       toast.error("An unexpected error occurred. Please try again.");
       console.error("Subscription error:", error);
+    } finally {
+      setSubmitting(false); // Set submitting state to false after request
     }
   };
 
   return (
-    <div className="w-full h-[330px] rounded-md bg-gray-700 p-8 ">
+    <div className="w-full h-[330px] rounded-md bg-gray-700 p-8">
       {loading ? (
         <div className="animate-pulse w-full h-full flex flex-col gap-5 items-center justify-center">
           <div className="h-6 w-3/4 bg-gray-600 rounded"></div> {/* Skeleton for heading */}
@@ -93,7 +97,7 @@ const SubscribeCard = () => {
         </div>
       ) : (
         <div className="flex flex-col gap-5 items-center justify-center">
-          <h1 className="text-white text-[1.2rem]  xl:text-[1.3rem] text-center">
+          <h1 className="text-white text-[1.2rem] xl:text-[1.3rem] text-center">
             Stay up to date with the latest Architectus Bureau projects and news.
           </h1>
           <form onSubmit={handleSubmit} className="w-full">
@@ -121,8 +125,12 @@ const SubscribeCard = () => {
               {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
             </div>
 
-            <button type="submit" className="w-full bg-gray-500 rounded-full py-2 outline-none text-white hover:bg-gray-600">
-              Subscribe
+            <button
+              type="submit"
+              className={`w-full bg-gray-500 rounded-full py-2 outline-none text-white hover:bg-gray-600 ${submitting ? 'cursor-wait' : ''}`}
+              disabled={submitting} // Disable button while submitting
+            >
+              {submitting ? 'Submitting...' : 'Subscribe'}
             </button>
           </form>
         </div>
