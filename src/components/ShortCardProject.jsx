@@ -38,8 +38,7 @@ const ShortCardProject = ({ expertise }) => {
                 }}
               ></div>
               <h1 className="absolute bottom-6 ps-4 w-full text-center sm:text-start  text-white text-lg sm:text-xl md:text-xl lg:text-2xl">
-                {/* {expertise.expertiseName} */}
-                {base_url}
+                {expertise.expertiseName}
               </h1>
             </div>
           </Link>
