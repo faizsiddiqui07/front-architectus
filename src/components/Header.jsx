@@ -70,7 +70,7 @@ const Header = () => {
                     />
                     <button
                       className="absolute top-4 right-2 text-lg text-gray-600 hover:text-black"
-                      onClick={() => {setOpenSearchBox(false), navigate('/')}}
+                      onClick={() => setOpenSearchBox(false)}
                     >
                       <IoCloseSharp className="text-xl xs:text-2xl" />
                     </button>
