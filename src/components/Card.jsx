@@ -21,7 +21,7 @@ const Card = ({ project, highlightedText }) => {
     <Link to={`/project/${project.slug}`} className="block w-full" onClick={scrollTop}>
       <div className="bg-white shadow-lg rounded-md overflow-hidden">
         <img
-          src={project.projectImage[0]}
+          src={project.projectImage?.[0]}
           alt={project.projectName}
           className="w-full h-full object-cover"
         />

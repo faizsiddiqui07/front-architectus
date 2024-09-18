@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import People from "./pages/People";
 import PeopleDetails from "./pages/PeopleDetails";
+import SearchProduct from "./pages/SearchProduct";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/people" element={<People />} />
         <Route path="/people/:slug" element={<PeopleDetails/>} />
+        <Route path="/search" element={<SearchProduct />} />
         <Route
           path="*"
           element={

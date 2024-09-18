@@ -82,7 +82,7 @@ const ProjectDetails = () => {
       </div>
 
       <div className="px-4 lg:px-14 w-full ">
-        <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center">Gallery</h2>
+        <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center sm:text-start">Gallery</h2>
         <ProjectImageGallery
           images={data?.projectImage}
           onImageClick={handleImageClick}
