@@ -24,13 +24,12 @@ const ProjectDetails = () => {
   const fetchProjectDetails = async () => {
     try {
       // Simulate a delayed response with setTimeout
-      setTimeout(async () => {
+      
         const response = await axios.post(`${base_url}/api/projectDetails`, {
           slug: params.slug,
         });
         setData(response.data.data);
         setLoading(false);
-      }, 100);
     } catch (error) {
       setError("Error fetching project details. Please try again later.");
       setLoading(false);
