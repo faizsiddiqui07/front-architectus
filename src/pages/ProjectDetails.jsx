@@ -24,12 +24,12 @@ const ProjectDetails = () => {
   const fetchProjectDetails = async () => {
     try {
       // Simulate a delayed response with setTimeout
-      
-        const response = await axios.post(`${base_url}/api/projectDetails`, {
-          slug: params.slug,
-        });
-        setData(response.data.data);
-        setLoading(false);
+
+      const response = await axios.post(`${base_url}/api/projectDetails`, {
+        slug: params.slug,
+      });
+      setData(response.data.data);
+      setLoading(false);
     } catch (error) {
       setError("Error fetching project details. Please try again later.");
       setLoading(false);
@@ -72,7 +72,7 @@ const ProjectDetails = () => {
 
       <ProjectHeader project={data} />
 
-      <div className={`w-full h-full ${data.description ?"my-16":"my-6"}`}>
+      <div className={`w-full h-full ${data.description ? "my-16" : "my-6"}`}>
         {data?.description && (
           <div className="text-white px-4 lg:px-14 w-full sm:w-3/4 lg:w-2/4 font-extralight text-justify mx-auto">
             {htmlParser(data?.description)}
@@ -80,12 +80,18 @@ const ProjectDetails = () => {
         )}
       </div>
 
-      <div className="px-4 lg:px-14 w-full ">
-        <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center sm:text-start">Gallery</h2>
-        <ProjectImageGallery
-          images={data?.projectImage}
-          onImageClick={handleImageClick}
-        />
+      <div className="px-4 lg:px-14 w-full">
+        {data?.projectImage && data.projectImage.length > 1 && (
+          <>
+            <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center sm:text-start">
+              Gallery
+            </h2>
+            <ProjectImageGallery
+              images={data.projectImage}
+              onImageClick={handleImageClick}
+            />
+          </>
+        )}
       </div>
 
       {selectedImageIndex !== null && (
