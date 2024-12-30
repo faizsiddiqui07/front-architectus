@@ -19,34 +19,34 @@ const Header = () => {
   };
 
   // Search
-  const handleSearch = (e) => {
-    if (e.target.value) {
-      navigate(`/search?q=${e.target.value}`);
-    } else {
-      navigate(`/`);
-    }
-  };
+  // const handleSearch = (e) => {
+  //   if (e.target.value) {
+  //     navigate(`/search?q=${e.target.value}`);
+  //   } else {
+  //     navigate(`/`);
+  //   }
+  // };
 
   return (
     <header
-      className={`h-16 sm:py-9 shadow-md bg-[#00000059] hover:bg-[#1a1a1a] transition-all duration-500 w-full z-40 ${
-        menuDisplay ? "fixed top-0" : "absolute"
+      className={`h-16 sm:py-9 shadow-md bg-[#000000aa] hover:bg-[#1a1a1a] transition-all duration-500 w-full z-40 fixed top-0 ${
+        menuDisplay ? "" : ""
       }`}
     >
-      <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-14">
+      <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-10">
         <div>
           <Link to="/">
             <img
               src={lightLogo}
-              className="w-56 sm:w-72 md:w-80 lg:w-96"
+              className="w-[250px] xxs:w-[275px] sm:w-[350px] md:w-80 lg:w-96"
               alt="Architectus Bureau Logo"
             />
           </Link>
         </div>
 
-        <div className="flex items-center gap-4 text-xl text-white z-50">
+        <div className="flex items-center gap-1 xxs:gap-4 text-xl text-white z-50">
           {/* Other UI elements like search and cart */}
-          {menuDisplay ? (
+          {/* {menuDisplay ? (
             ""
           ) : (
             <div
@@ -57,7 +57,7 @@ const Header = () => {
                 className="text-2xl"
                 onClick={() => setOpenSearchBox(!openSearchBox)}
               >
-                <CiSearch className="text-2xl xs:text-3xl" />
+                <CiSearch className="text-xl xxs:text-2xl xs:text-3xl" />
               </button>
               {openSearchBox && (
                 <div className="w-[280px] xs:w-[300px] lg:w-72 absolute -right-14 top-10 bg-white rounded-md shadow-lg p-2 z-50 transition duration-300 ease-in-out transform scale-100">
@@ -78,7 +78,7 @@ const Header = () => {
                 </div>
               )}
             </div>
-          )}
+          )} */}
 
           <button
             className="p-2 rounded-md"

@@ -5,7 +5,7 @@ import { base_url } from "../config/config";
 import Breadcrumb from "../components/BreadCrumb";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/navigation"; 
 import { Navigation } from "swiper/modules";
 import RelatedProject from "../components/RelatedProject";
 import SwiperCore from "swiper";
@@ -65,7 +65,7 @@ const ProjectDetails = () => {
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
       <div className="sticky -top-2 bg-[#1a1a1a] border-t border-[#3939399f] z-10">
-        <div className="w-full h-[75px] px-4 lg:px-14 flex justify-between items-center">
+        <div className="w-full h-[75px] px-4 lg:px-10 flex justify-between items-center">
           {data && <Breadcrumb one={data.projectName} two="Projects" />}
         </div>
       </div>
@@ -74,13 +74,13 @@ const ProjectDetails = () => {
 
       <div className={`w-full h-full ${data.description ? "my-16" : "my-6"}`}>
         {data?.description && (
-          <div className="text-white px-4 lg:px-14 w-full sm:w-3/4 lg:w-2/4 font-extralight text-justify mx-auto">
+          <div className="text-white px-4 lg:px-10 w-full sm:w-3/4 lg:w-2/4 font-extralight text-justify mx-auto">
             {htmlParser(data?.description)}
           </div>
         )}
       </div>
 
-      <div className="px-4 lg:px-14 w-full">
+      <div className="px-4 lg:px-10 w-full">
         {data?.projectImage && data.projectImage.length > 1 && (
           <>
             <h2 className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 text-center sm:text-start">
@@ -115,7 +115,7 @@ const ProjectDetails = () => {
 // Skeleton Components
 const SkeletonHeader = () => (
   <div className="relative w-full bg-gray-800 animate-pulse h-[550px] rounded-md">
-    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-14 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
+    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8">
       <div className="bg-gray-600 h-8 w-1/3 rounded-md"></div>
       <div className="bg-gray-600 h-6 w-24 rounded-full"></div>
     </div>
@@ -123,7 +123,7 @@ const SkeletonHeader = () => (
 );
 
 const SkeletonDescription = () => (
-  <div className="px-4 lg:px-14 mt-10">
+  <div className="px-4 lg:px-10 mt-10">
     <div className="mx-auto w-full sm:w-3/4 lg:w-2/4">
       <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
       <div className="bg-gray-600 h-6 rounded-md mb-4 animate-pulse"></div>
@@ -134,7 +134,7 @@ const SkeletonDescription = () => (
 );
 
 const SkeletonImageGallery = () => (
-  <div className="px-4 lg:px-14 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
+  <div className="px-4 lg:px-10 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-28">
     {[...Array(6)].map((_, index) => (
       <div
         key={index}
@@ -160,7 +160,7 @@ const ProjectHeader = ({ project }) => (
       }}
     ></div>
     {/* Header Content */}
-    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-14 flex flex-col-reverse md:flex-row justify-between items-center gap-2 md:gap-8">
+    <div className="absolute bottom-4 lg:bottom-10 w-full px-4 lg:px-10 flex flex-col-reverse md:flex-row justify-between items-center gap-2 md:gap-8">
       <h2 className="text-white text-center md:text-left text-lg sm:text-xl md:text-2xl font-medium">
         {project.projectName}
       </h2>

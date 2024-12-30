@@ -23,15 +23,15 @@ const PeopleDetails = () => {
               "linear-gradient(to bottom, transparent 65%, black 100%)",
           }}
         ></div>
-        <div className="absolute inset-0 flex items-end pb-8 px-4 lg:px-14">
+        <div className="absolute inset-0 flex items-end pb-8 px-4 lg:px-10">
           <h1 className="text-white text-4xl font-bold capitalize">{slug}</h1>
         </div>
       </div>
 
       {/* Team and Founder Section */}
-      <div className="w-full flex flex-col sm:flex-row gap-8 py-16 pb-24 px-4 lg:px-14">
+      <div className="w-full flex flex-col sm:flex-row gap-8 py-16 pb-24 px-4 lg:px-10">
         {/* Founder Section */}
-        <ArticleCard image={ownerImage} title="Khan Aamir" url="/people/founder" />
+        <ArticleCard image={ownerImage} title="Khaan Aamir" url="/people/founder" />
 
         {/* Team Section */}
         <ArticleCard image={teamImage} title="Kalpana Saini" url="/people/founder" />
@@ -42,9 +42,9 @@ const PeopleDetails = () => {
 
 // Reusable ArticleCard Component
 const ArticleCard = ({ image, title, url }) => (
-  <section className="w-full sm:w-1/2 relative rounded-lg overflow-hidden shadow-lg">
-    <img src={image} alt={title} className="w-full h-[400px] object-cover" />
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+  <section className="w-full sm:w-1/2 relative flex justify-center items-center rounded-lg overflow-hidden">
+    <img src={image} alt={title} className="w-[400px] h-[400px] rounded-full object-cover" />
+    <div className="absolute inset-0 "></div>
     <h2 className="absolute bottom-8 left-0 right-0 text-3xl font-bold text-white text-center">
       {title}
     </h2>

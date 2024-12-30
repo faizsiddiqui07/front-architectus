@@ -101,18 +101,18 @@ const ProjectPage = () => {
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
       <div className="sticky top-[-1px] bg-[#1a1a1a] border-t border-[#3939399f]">
-        <div className="w-full h-[75px] px-4 lg:px-14 flex justify-between items-center">
+        <div className="w-full h-[75px] px-4 lg:px-10 flex justify-between items-center">
           <p className="text-white text-2xl">Projects</p>
           <span className="text-white text-xl">{filteredProjects.length} Projects</span>
         </div>
-        <div className="w-full h-[130px] sm:h-[85px] px-4 lg:px-14 border-y border-[#7a78789f] flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3 sm:gap-5">
-          <input
+        <div className="w-full h-[130px] sm:h-[85px] px-4 lg:px-10 border-y border-[#7a78789f] flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3 sm:gap-5">
+          {/* <input
             className="w-full sm:w-[50%] rounded-full px-5 py-[7px] outline-none"
             placeholder="Search Project..."
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          /> */}
           <Dropdown
             label="All project types"
             items={projectTypes}
@@ -121,7 +121,7 @@ const ProjectPage = () => {
           />
         </div>
       </div>
-      <main className="px-4 lg:px-14">
+      <main className="px-4 lg:px-10">
         <section className="my-6 mb-36">
           {loading ? (
             renderSkeleton()

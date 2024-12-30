@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import video1 from "../assets/bannerVideo/video1.mp4";
-import video2 from "../assets/bannerVideo/video2.mp4";
 import video3 from "../assets/bannerVideo/video3.mp4";
 import video4 from "../assets/bannerVideo/video4.mp4";
+import video5 from "../assets/bannerVideo/video5.mp4";
+import video6 from "../assets/bannerVideo/video6.mp4";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -20,13 +21,6 @@ const BannerVideo = () => {
       link: "",
     },
     {
-      url: video2,
-      title: "News",
-      description:
-        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
-      link: "",
-    },
-    {
       url: video3,
       title: "News",
       description:
@@ -35,6 +29,20 @@ const BannerVideo = () => {
     },
     {
       url: video4,
+      title: "News",
+      description:
+        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
+      link: "",
+    },
+    {
+      url: video5,
+      title: "News",
+      description:
+        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
+      link: "",
+    },
+    {
+      url: video6,
       title: "News",
       description:
         "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",

@@ -5,7 +5,7 @@ import SubscribeCard from "../components/SubscribeCard";
 import ShortCardProject from "../components/ShortCardProject";
 import axios from "axios";
 import { base_url } from "../config/config";
-import image from "../assets/images/sliderOpen.jpg";
+import image from "../assets/images/snow14.webp";
 
 const Home = () => {
   const [expertise, setExpertise] = useState([]);
@@ -41,7 +41,7 @@ const Home = () => {
         component={<SubscribeCard />}
       />
 
-      <div className="px-4 lg:px-14 w-full">
+      <div className="px-4 lg:px-10 w-full">
         <h2 className="text-3xl text-white">Expertise</h2>
         <div className="w-full flex justify-between flex-wrap md:mb-10">
           {loading ? (
@@ -56,7 +56,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="block md:hidden px-4 lg:px-14 my-10">
+      <div className="block md:hidden px-4 lg:px-10 my-10">
         <SubscribeCard />
       </div>
     </div>

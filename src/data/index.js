@@ -4,7 +4,7 @@ import { FaXTwitter, FaThreads } from "react-icons/fa6";
 export const socialLinks = [
    {
       icon: FaFacebookF,
-      url: "#"
+      url: "https://www.facebook.com/people/Architectus-Bureau/100064968250239/"
    },
    {
       icon: FaXTwitter,

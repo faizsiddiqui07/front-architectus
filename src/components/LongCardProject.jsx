@@ -15,7 +15,7 @@ const LongCardProject = ({ to, image, heading, projectType, component }) => {
   }, []);
 
   return (
-    <div className="mx-auto px-4 lg:px-14 my-10 ">
+    <div className="mx-auto px-4 lg:px-10 my-10 ">
       <h2 className="text-3xl text-white py-4">{heading}</h2>
 
       <div className="w-full flex gap-7">

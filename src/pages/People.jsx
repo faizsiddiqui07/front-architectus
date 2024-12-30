@@ -20,13 +20,13 @@ const People = () => {
               "linear-gradient(to bottom, transparent 65%, black 100%)",
           }}
         ></div>
-        <div className="absolute inset-0 flex items-end pb-8 px-4 lg:px-14">
+        <div className="absolute inset-0 flex items-end pb-8 px-4 lg:px-10">
           <h1 className="text-white text-4xl font-bold">People</h1>
         </div>
       </div>
 
       {/* Team and Founder Section */}
-      <div className="w-full flex flex-col sm:flex-row gap-8 py-16 px-4 lg:px-14">
+      <div className="w-full flex flex-col sm:flex-row gap-8 py-16 px-4 lg:px-10">
         {/* Founder Section */}
         <ArticleCard image={ownerImage} title="Founder" url="/people/founder" />
 

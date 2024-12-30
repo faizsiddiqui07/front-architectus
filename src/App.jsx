@@ -29,7 +29,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/people" element={<People />} />
         <Route path="/people/:slug" element={<PeopleDetails/>} />
-        <Route path="/search" element={<SearchProduct />} />
+        {/* <Route path="/search" element={<SearchProduct />} /> */}
         <Route
           path="*"
           element={

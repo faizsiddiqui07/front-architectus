@@ -33,7 +33,7 @@ const RelatedProject = ({ projectType, currentProjectId }) => {
   }, [projectType, currentProjectId]);
 
   return (
-    <div className="px-4 lg:px-14 w-full mb-36">
+    <div className="px-4 lg:px-10 w-full mb-36">
       <h2 className="text-white text-2xl border-y mb-5 border-[#3939399f] py-7 cursor-default">
         More Projects
       </h2>

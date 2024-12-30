@@ -1,7 +1,7 @@
 const production = 'production'
 const development = 'development'
 
-const mode = development
+const mode = production
 let base_url = ''
 
 

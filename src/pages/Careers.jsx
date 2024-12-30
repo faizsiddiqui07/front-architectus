@@ -61,6 +61,7 @@ const Careers = () => {
     address: "",
     description: "",
   });
+  
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -83,7 +84,6 @@ const Careers = () => {
       const data = await axios.post(`${base_url}/api/uploadCarrers`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log("daa",data);
       
       if (data.data.success) {
         toast.success(data.data.message)
@@ -98,7 +98,7 @@ const Careers = () => {
     <div className="w-full">
       <div className="w-full h-[350px] xs:h-[400px] md:h-[600px] relative">
         <img src={image} className="w-full h-full object-cover" alt="Career" />
-        <span className="text-4xl sm:text-4xl text-white font-normal absolute bottom-7 px-4 lg:px-14">
+        <span className="text-4xl sm:text-4xl text-white font-normal absolute bottom-7 px-4 lg:px-10">
           Careers
         </span>
       </div>

@@ -16,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className=" mx-auto w-full px-4 lg:px-14 bg-stone-900 ">
+    <footer className=" mx-auto w-full px-4 lg:px-10 bg-stone-900 ">
       {/* Dotted line */}
         <div className="border-b-2 w-full border-dotted mb-10"></div>
 
@@ -52,6 +52,7 @@ const Footer = () => {
                   <Link
                   key={index}
                     to={item.url}
+                    target="_blank"
                     className="w-7 h-7 lg:w-10 lg:h-10 rounded-full flex justify-center items-center bg-gray-700 text-white"
                   >
                     {<item.icon />}

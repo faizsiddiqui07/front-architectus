@@ -15,7 +15,7 @@ const SkeletonCard = () => (
 
 const SkeletonHeader = () => (
   <div className="relative w-full h-[350px] xs:h-[400px] md:h-[600px] bg-gray-300 animate-pulse">
-    <h2 className="absolute bottom-7 text-gray-500 text-3xl sm:text-4xl px-4 lg:px-14 text-center sm:text-start w-full">
+    <h2 className="absolute bottom-7 text-gray-500 text-3xl sm:text-4xl px-4 lg:px-10 text-center sm:text-start w-full">
       Loading...
     </h2>
   </div>
@@ -55,7 +55,7 @@ const ExpertisePage = () => {
     return (
       <div className="w-full mb-36">
         <SkeletonHeader />
-        <main className="px-4 lg:px-14 my-10">
+        <main className="px-4 lg:px-10 my-10">
           <div className="w-full flex flex-wrap justify-between items-center">
             {[...Array(6)].map((_, index) => (
               <SkeletonCard key={index} />
@@ -78,12 +78,12 @@ const ExpertisePage = () => {
           className="w-full h-[350px] xs:h-[400px] md:h-[600px] object-cover"
           alt="Expertise"
         />
-        <h2 className="absolute bottom-7 text-white text-3xl sm:text-4xl px-4 lg:px-14 text-center sm:text-start w-full">
+        <h2 className="absolute bottom-7 text-white text-3xl sm:text-4xl px-4 lg:px-10 text-center sm:text-start w-full">
           Expertise
         </h2>
       </div>
 
-      <main className="px-4 lg:px-14 my-10">
+      <main className="px-4 lg:px-10 my-10">
         <div className="w-full flex flex-wrap justify-between items-center">
           {expertise.map((item) => (
             <ExpertiseCard key={item._id} expertise={item} />
