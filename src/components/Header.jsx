@@ -29,11 +29,11 @@ const Header = () => {
   //   }
   // };
 
-  const headerBgColor = isScrolled ? "bg-[#c8c8c8c6]" : "bg-white";
+  const headerBgColor = isScrolled ? "bg-white" : "bg-[#c8c8c8c6]";
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 75) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);

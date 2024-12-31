@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 const People = () => {
   return (
-    <section className="w-full relative top-[65px] sm:top-[73px]">
+    <section className="w-full ">
       {/* Hero Image with Text Overlay */}
-      <div className="relative w-full h-[300px] sm:h-[400px] overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] overflow-hidden">
         <img
-          src={teamImage}
+          src={ownerImage}
           alt="Team"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
         />
         <div
           className="absolute inset-0"

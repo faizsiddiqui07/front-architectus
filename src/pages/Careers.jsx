@@ -103,8 +103,8 @@ const Careers = () => {
         </span>
       </div>
 
-      <div className="text-center">
-        <p className="w-4/5 sm:w-2/3 lg:w-1/2 mx-auto mt-10 text-white font-extralight">
+      <div className="text-center px-4 lg:px-10">
+        <p className="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-10 text-white font-extralight">
           Foster + Partners welcomes designers, innovators, makers, and
           pioneering trailblazers to join the practice.
           <br />
@@ -116,7 +116,7 @@ const Careers = () => {
         </p>
       </div>
 
-      <div className="w-4/5 sm:w-2/3 lg:w-1/2 mx-auto my-16 mb-32">
+      <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto my-16 px-4 lg:px-10">
         <form
           onSubmit={handleSubmit}
           className="bg-white p-6 shadow-md rounded-md flex flex-col items-center"
