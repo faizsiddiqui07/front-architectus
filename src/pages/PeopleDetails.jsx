@@ -63,23 +63,24 @@ const ArticleCard = ({ image, title, position, description, url }) => (
     <img
       src={image}
       alt={title}
-      className="w-full h-[400px] object-cover rounded-lg transition-opacity duration-300 group-hover:opacity-30"
+      className="w-full h-[400px] object-cover rounded-lg transition-opacity duration-300 group-hover:opacity-20"
     />
 
     {/* Overlay */}
     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
 
-    {/* Title and Position */}
-    <div className="absolute bottom-12 text-center text-white">
+    {/* Title and Position (Hidden on hover) */}
+    <div className="absolute bottom-12 text-center text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300">
       <h2 className="text-2xl font-bold">{title}</h2>
       <p className="text-lg mt-1">{position}</p>
     </div>
 
-    {/* Description (visible on hover) */}
+    {/* Description (Visible on hover) */}
     <div className="absolute inset-0 flex items-center justify-center text-white px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <p className="text-center text-sm md:text-base">{description}</p>
+      <p className="text-center text-base md:text-lg">{description}</p>
     </div>
   </Link>
 );
+
 
 export default PeopleDetails;
