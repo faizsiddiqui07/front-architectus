@@ -1,16 +1,18 @@
-import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import lightLogo from "../assets/logo/light-logo.png";
-import { IoSearchOutline, IoCloseSharp } from "react-icons/io5";
-import { CiSearch } from "react-icons/ci";
+import { IoCloseSharp } from "react-icons/io5";
+// import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import MenuSlide from "./MenuSlide";
 
 const Header = () => {
   const [menuDisplay, setMenuDisplay] = useState(false);
-  const navigate = useNavigate()
-  const [openSearchBox, setOpenSearchBox] = useState(false);
-  const searchBoxRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  // const navigate = useNavigate()
+  // const [openSearchBox, setOpenSearchBox] = useState(false);
+  // const searchBoxRef = useRef(null);
 
   const toggleMenu = () => {
     const newMenuDisplay = !menuDisplay;
@@ -27,11 +29,27 @@ const Header = () => {
   //   }
   // };
 
+  const headerBgColor = isScrolled ? "bg-[#1a1a1a]" : "bg-[#000000aa]";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header
-      className={`h-16 sm:py-9 shadow-md bg-[#000000aa] hover:bg-[#1a1a1a] transition-all duration-500 w-full z-40 fixed top-0 ${
-        menuDisplay ? "" : ""
-      }`}
+      className={`h-16 sm:py-9 shadow-md ${headerBgColor} hover:bg-[#1a1a1a] transition-all duration-200 w-full z-40 ${location.pathname === "/" ? "fixed" : "absolute"}`}
     >
       <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-10">
         <div>

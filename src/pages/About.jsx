@@ -42,22 +42,22 @@ const About = () => {
 
             <ul className="mt-2 text-left list-disc list-inside mx-auto space-y-2 ">
               <li>
-                <span className="">Contextual Sensitivity:</span> Tailoring
+                <span className="mr-1">Contextual Sensitivity:</span> Tailoring
                 designs to align with the geographical, cultural, and social
                 fabric of the location.
               </li>
               <li>
-                <span className="">Experimental Techniques:</span> Utilizing
+                <span className="mr-1">Experimental Techniques:</span> Utilizing
                 cutting-edge technologies like parametric modeling, 3D printing,
                 and VR simulations to explore unconventional solutions.
               </li>
               <li>
-                <span className="">Sustainability in Every Detail:</span> From
+                <span className="mr-1">Sustainability in Every Detail:</span> From
                 passive cooling techniques and green roofs to renewable energy
                 integration, the firm prioritizes eco-conscious solutions.
               </li>
               <li>
-                <span className="">Functional Aesthetics:</span> Striking a
+                <span className="mr-1">Functional Aesthetics:</span> Striking a
                 balance between beauty and usability by crafting spaces that
                 inspire and perform simultaneously.
               </li>
@@ -70,13 +70,13 @@ const About = () => {
 
             <ul className="mt-2 text-left list-disc list-inside mx-auto space-y-2 ">
               <li>
-                <span className="">Energy Efficiency:</span> Smart building systems, natural lighting, and renewable energy integration.
+                <span className="mr-1">Energy Efficiency:</span> Smart building systems, natural lighting, and renewable energy integration.
               </li>
               <li>
-                <span className="">Material Innovation:</span>Use of locally sourced, recycled, and low-impact materials.
+                <span className="mr-1">Material Innovation:</span>Use of locally sourced, recycled, and low-impact materials.
               </li>
               <li>
-                <span className="">Biodiversity Promotion:</span>Designs that incorporate green spaces, urban forests, and water conservation techniques.
+                <span className="mr-1">Biodiversity Promotion:</span>Designs that incorporate green spaces, urban forests, and water conservation techniques.
               </li>
             </ul>
 
