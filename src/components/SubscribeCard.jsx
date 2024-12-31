@@ -87,7 +87,7 @@ const SubscribeCard = () => {
   };
 
   return (
-    <div className="w-full h-[330px] rounded-md bg-gray-700 p-8">
+    <div className="w-full h-[330px] rounded-md bg-gray-700 p-4 xs:p-8 flex">
       {loading ? (
         <div className="animate-pulse w-full h-full flex flex-col gap-5 items-center justify-center">
           <div className="h-6 w-3/4 bg-gray-600 rounded"></div> {/* Skeleton for heading */}

@@ -102,13 +102,13 @@ const BannerVideo = () => {
         </Swiper>
         {/* Left and Right Buttons */}
         <button
-          className="absolute left-5 top-1/2 transform z-50 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+          className="absolute left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
         >
           <FaArrowLeftLong />
         </button>
         <button
-          className="absolute right-5 top-1/2 transform z-50 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+          className="absolute right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slideNext()} // Slide to next
         >
           <FaArrowRightLong />

@@ -38,7 +38,7 @@ const ProjectPage = () => {
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedType, setSelectedType] = useState("All project types");
+  const [selectedType, setSelectedType] = useState("Categories");
   const [searchTerm, setSearchTerm] = useState("");
   const [projectTypes, setProjectTypes] = useState([]);
 
@@ -49,7 +49,7 @@ const ProjectPage = () => {
       setProjects(projectData);
       setFilteredProjects(projectData);
 
-      const types = ["All project types", ...new Set(projectData.map(p => p.projectType))];
+      const types = ["Categories", ...new Set(projectData.map(p => p.projectType))];
       setProjectTypes(types);
     } catch (error) {
       setError("Error fetching projects. Please try again later.");
@@ -69,7 +69,7 @@ const ProjectPage = () => {
     const filterProjects = () => {
       let filtered = projects;
 
-      if (selectedType !== "All project types") {
+      if (selectedType !== "Categories") {
         filtered = filtered.filter(project => project.projectType === selectedType);
       }
       if (searchTerm) {
@@ -114,7 +114,7 @@ const ProjectPage = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           /> */}
           <Dropdown
-            label="All project types"
+            label="Categories"
             items={projectTypes}
             selected={selectedType}
             onSelect={setSelectedType}

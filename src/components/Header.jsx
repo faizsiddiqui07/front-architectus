@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import lightLogo from "../assets/logo/light-logo.png";
+import lightLogo from "../assets/logo/new-logo2.png";
 import { IoCloseSharp } from "react-icons/io5";
 // import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -29,7 +29,7 @@ const Header = () => {
   //   }
   // };
 
-  const headerBgColor = isScrolled ? "bg-[#1a1a1a]" : "bg-[#000000aa]";
+  const headerBgColor = isScrolled ? "bg-[#c8c8c8c6]" : "bg-white";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +49,7 @@ const Header = () => {
 
   return (
     <header
-      className={`h-16 sm:py-9 shadow-md ${headerBgColor} hover:bg-[#1a1a1a] transition-all duration-200 w-full z-40 ${location.pathname === "/" ? "fixed" : "absolute"}`}
+      className={`h-16 sm:py-9 shadow-md ${headerBgColor} hover:bg-[#c8c8c8c6] transition-all duration-400 w-full z-40 ${location.pathname === "/" ? "fixed" : "absolute"}`}
     >
       <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-10">
         <div>
@@ -106,7 +106,7 @@ const Header = () => {
             {menuDisplay ? (
               <IoCloseSharp className="text-black" />
             ) : (
-              <GiHamburgerMenu />
+              <GiHamburgerMenu className="text-black" />
             )}
           </button>
         </div>
