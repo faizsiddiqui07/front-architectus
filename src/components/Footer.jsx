@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import lightLogo2 from "../assets/logo/light-logo-2.png";
+import lightLogo from "../assets/logo/new-logo2.png";
 import { menuLinks, socialLinks } from "../data";
 import { FaArrowUp } from "react-icons/fa";
 import scrollTop from "../helpers/scrollTop";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+ 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,15 +16,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className=" mx-auto w-full px-4 lg:px-10 bg-stone-900 ">
+    <footer className=" mx-auto w-full px-4 lg:px-10 bg-[#c8c8c8c6]">
       {/* Dotted line */}
-        <div className="border-b-2 w-full border-dotted mb-10"></div>
+        {/* <div className="border-b-2 w-full border-dotted mb-10"></div> */}
 
-      <div className="flex justify-between items-center flex-col lg:flex-row pb-10 gap-10 lg:gap-0">
+      <div className="flex justify-between items-center flex-col lg:flex-row py-6 gap-10 lg:gap-0">
         <div className="flex items-center lg:items-start flex-col gap-8">
           <div>
             <Link to={"/"} onClick={scrollTop}>
-              <img src={lightLogo2} className="w-56" alt="Architectus Bureau Logo" />
+              <img src={lightLogo} className="w-80" alt="Architectus Bureau Logo" />
             </Link>
           </div>
 
@@ -35,7 +35,7 @@ const Footer = () => {
                   key={index}
                   to={item.url}
                   onClick={scrollTop}
-                  className="text-white text-center hover:text-slate-300 text-base"
+                  className=" text-center text-base"
                 >
                   {item.title}
                 </Link>
@@ -61,7 +61,7 @@ const Footer = () => {
               })}
             </div>
 
-            <button className="text-white" onClick={scrollToTop}>
+            <button className="" onClick={scrollToTop}>
               Back To Top{" "}
               <span className="inline-block">
                 <FaArrowUp />
@@ -70,7 +70,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="text-gray-400 text-center md:text-right text-base">
+            <p className="text-center md:text-right text-base">
               Legal and policies © {currentYear} Architectus Bureau. All Rights Reserved.
             </p>
           </div>

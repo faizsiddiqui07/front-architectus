@@ -1,46 +1,113 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import scrollTop from '../helpers/scrollTop'
+import React, { useRef, useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { EffectFade } from "swiper/modules";
 
-const Card = ({ project, highlightedText }) => {
-  // Function to highlight the search term within the project name
-  const highlightText = (text, highlight) => {
-    if (!highlight || !highlight.trim()) return text;
+const Card = ({ project }) => {
+  const [showSlider, setShowSlider] = useState(false);
+  const [sliderIndex, setSliderIndex] = useState(0);
 
-    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-    return parts.map((part, index) =>
-      part.toLowerCase() === highlight.toLowerCase() ? (
-        <span key={index} className="bg-yellow-300">{part}</span>
-      ) : (
-        part
-      )
-    );
+  useEffect(() => {
+    if (showSlider) {
+      // Disable background scrolling
+      document.body.style.overflow = "hidden";
+    } else {
+      // Enable background scrolling
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showSlider]);
+
+  const handleImageClick = (index) => {
+    setSliderIndex(index);
+    setShowSlider(true);
   };
 
   return (
-    <Link to={`/project/${project.slug}`} className="block w-full" onClick={scrollTop}>
-      <div className="bg-white shadow-lg rounded-md overflow-hidden">
-        <img
-          src={project.projectImage?.[0]}
-          alt={project.projectName}
-          className="w-full h-full object-cover"
-        />
-        <div className="p-3">
-          <p className="text-sm font-semibold text-gray-600">
-            {project.completionDate.split("-", 1)}  {project.projectAddress}
-          </p>
-          <h5 className="text-lg text-[#333333] font-medium ">
-            {/* Apply the highlightText function to the project name */}
-            {highlightText(
-              project.projectName.length > 70
-                ? `${project.projectName.slice(0, 70)}...`
-                : project.projectName,
-              highlightedText
-            )}
-          </h5>
+    <>
+      <div className="block w-full cursor-pointer">
+        <div className="bg-white shadow-lg rounded-md overflow-hidden">
+          <img
+            src={project.projectImage?.[0]}
+            alt={project.projectName}
+            className="w-full h-full object-cover"
+            onClick={() => handleImageClick(0)}
+          />
         </div>
       </div>
-    </Link>
+
+      {showSlider && (
+        <ImageSliderPopup
+          images={project.projectImage}
+          startIndex={sliderIndex}
+          onClose={() => setShowSlider(false)}
+        />
+      )}
+    </>
+  );
+};
+
+const ImageSliderPopup = ({ images, startIndex, onClose }) => {
+  const swiperRef = useRef(null);
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+      onClick={handleOverlayClick}
+    >
+      <div className="relative max-w-6xl w-full h-[90%] flex items-center justify-center xs:px-4">
+        <Swiper
+          initialSlide={startIndex}
+          slidesPerView={1}
+          loop={true}
+          effect="fade"
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          modules={[EffectFade]}
+          className="mySwiper"
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={image}
+                alt={`Slide ${index}`}
+                className="w-full h-full object-contain"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button
+          className="absolute top-10 right-10 z-50 bg-black/50 text-white w-10 h-10 rounded-full text-2xl"
+          onClick={onClose}
+        >
+          &times;
+        </button>
+        <button
+          className="absolute left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+          onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
+        >
+          <LuChevronLeft />
+        </button>
+        <button
+          className="absolute right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+          onClick={() => swiperRef.current?.slideNext()} // Slide to next
+        >
+          <LuChevronRight />
+        </button>
+      </div>
+    </div>
   );
 };
 

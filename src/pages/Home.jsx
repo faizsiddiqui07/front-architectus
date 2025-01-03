@@ -41,21 +41,6 @@ const Home = () => {
         component={<SubscribeCard />}
       />
 
-      <div className="px-4 lg:px-10 w-full">
-        <h2 className="text-3xl text-white">Expertise</h2>
-        <div className="w-full flex justify-between flex-wrap md:mb-10">
-          {loading ? (
-            <p className="text-white">Loading expertise...</p>
-          ) : error ? (
-            <p className="text-red-500">{error}</p>
-          ) : (
-            expertise.map((item, index) => (
-              <ShortCardProject key={index} expertise={item} />
-            ))
-          )}
-        </div>
-      </div>
-
       <div className="block md:hidden px-4 lg:px-10 my-10">
         <SubscribeCard />
       </div>

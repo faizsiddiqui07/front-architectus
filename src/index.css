@@ -46,16 +46,3 @@ input[type=number] {
   height: 15px !important;
   background-color: white !important;
 }
-
-.swiper-button-next {
-  color: red;
-}
-
-.swiper-button-prev {
-  color: red;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  color: rgb(255, 91, 91);
-}

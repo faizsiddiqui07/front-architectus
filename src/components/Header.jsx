@@ -8,7 +8,6 @@ import MenuSlide from "./MenuSlide";
 
 const Header = () => {
   const [menuDisplay, setMenuDisplay] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   // const navigate = useNavigate()
   // const [openSearchBox, setOpenSearchBox] = useState(false);
@@ -29,27 +28,10 @@ const Header = () => {
   //   }
   // };
 
-  const headerBgColor = isScrolled ? "bg-white" : "bg-[#c8c8c8c6]";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 75) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <header
-      className={`h-16 sm:py-9 shadow-md ${headerBgColor} hover:bg-[#c8c8c8c6] transition-all duration-400 w-full z-40 ${location.pathname === "/" ? "fixed" : "absolute"}`}
+      className={`h-16 sm:py-9 shadow-md bg-[#c8c8c8c6] transition-all duration-400 w-full z-40 fixed`}
     >
       <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-10">
         <div>

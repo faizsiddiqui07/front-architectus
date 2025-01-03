@@ -47,7 +47,7 @@ const Dropdown = ({ label, options, value, onSelect }) => (
   </div>
 );
 
-const Careers = () => {
+const Career = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: "",
@@ -99,7 +99,7 @@ const Careers = () => {
       <div className="w-full h-[350px] xs:h-[400px] md:h-[600px] relative">
         <img src={image} className="w-full h-full object-cover" alt="Career" />
         <span className="text-4xl sm:text-4xl text-white font-normal absolute bottom-7 px-4 lg:px-10">
-          Careers
+          Career
         </span>
       </div>
 
@@ -267,4 +267,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default Career;

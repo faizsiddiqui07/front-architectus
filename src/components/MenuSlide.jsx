@@ -1,5 +1,5 @@
 import React from "react";
-import SliderMenuImage from "../assets/images/sliderOpen.jpg";
+import SliderMenuImage from "../assets/images/snow14.webp";
 import { Link } from "react-router-dom";
 import { menuLinks, socialLinks } from "../data";
 

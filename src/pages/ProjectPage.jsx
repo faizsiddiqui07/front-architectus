@@ -7,7 +7,7 @@ import { base_url } from "../config/config";
 
 // Reusable Dropdown component
 const Dropdown = ({ label, items, selected, onSelect }) => (
-  <Menu as="div" className="relative w-full sm:w-[50%] lg:w-[25%] inline-block text-left">
+  <Menu as="div" className="relative w-[250px] inline-block text-left">
     <MenuButton className="flex justify-between w-full gap-x-1.5 bg-white px-5 py-2 text-sm font-light text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 rounded-full">
       {selected || label}
       <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
@@ -100,19 +100,9 @@ const ProjectPage = () => {
 
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
-      <div className="sticky top-[-1px] bg-[#1a1a1a] border-t border-[#3939399f]">
-        <div className="w-full h-[75px] px-4 lg:px-10 flex justify-between items-center">
+      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f]">
+        <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 flex justify-between items-center flex-col xxs:flex-row border-b gap-3 border-[#7a78789f]">
           <p className="text-white text-2xl">Projects</p>
-          <span className="text-white text-xl">{filteredProjects.length} Projects</span>
-        </div>
-        <div className="w-full h-[130px] sm:h-[85px] px-4 lg:px-10 border-y border-[#7a78789f] flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3 sm:gap-5">
-          {/* <input
-            className="w-full sm:w-[50%] rounded-full px-5 py-[7px] outline-none"
-            placeholder="Search Project..."
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          /> */}
           <Dropdown
             label="Categories"
             items={projectTypes}
@@ -120,6 +110,7 @@ const ProjectPage = () => {
             onSelect={setSelectedType}
           />
         </div>
+        
       </div>
       <main className="px-4 lg:px-10">
         <section className="my-6 mb-36">
@@ -133,7 +124,7 @@ const ProjectPage = () => {
             <div className="w-full flex flex-wrap gap-6">
               {filteredProjects.map((project, index) => (
                 <div key={index} className="w-full mx-auto sm:w-[48%] lg:w-[48%] xl:w-[31.50%] flex justify-between">
-                  <Card project={project} highlightedText={searchTerm} />
+                  <Card project={project} />
                 </div>
               ))}
             </div>

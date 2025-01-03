@@ -48,16 +48,16 @@ export const menuLinks = [
       url: "/expertise"
    }, {
       id: "2",
-      title: "Careers",
-      url: "/careers"
+      title: "About us",
+      url: "/about"
    }, {
       id: "3",
       title: "People",
       url: "/people"
-   }, {
+   },{
       id: "4",
-      title: "About us",
-      url: "/about"
+      title: "Career",
+      url: "/career"
    }, {
       id: "5",
       title: "Contact",

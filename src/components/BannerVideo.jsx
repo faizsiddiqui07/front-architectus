@@ -6,7 +6,7 @@ import video4 from "../assets/bannerVideo/video4.mp4";
 import video5 from "../assets/bannerVideo/video5.mp4";
 import video6 from "../assets/bannerVideo/video6.mp4";
 
-import { FaArrowLeftLong, FaArrowRightLong  } from "react-icons/fa6";
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -100,18 +100,18 @@ const BannerVideo = () => {
             </div>
           ))}
         </Swiper>
-        {/* Left and Right Buttons */}
+        {/* Left and Right Buttons */} 
         <button
           className="absolute left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
         >
-          <FaArrowLeftLong />
+          <LuChevronLeft />
         </button>
         <button
           className="absolute right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slideNext()} // Slide to next
         >
-          <FaArrowRightLong />
+          <LuChevronRight />
         </button>
       </div>
     </div>
