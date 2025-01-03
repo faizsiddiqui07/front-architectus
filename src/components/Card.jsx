@@ -88,31 +88,29 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
             </SwiperSlide>
           ))}
           <button
-          className="absolute top-4 sm:top-6 md:top-10 lg:top-10 right-2 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
-          onClick={onClose}
-        >
-          &times;
-        </button>
+            className="absolute top-4 sm:top-6 md:top-10 lg:top-10 right-2 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
+            onClick={onClose}
+          >
+            &times;
+          </button>
         </Swiper>
-        
-        {
-          images.length > 1 && (
-            <>
+
+        {images.length > 1 && (
+          <>
             <button
-          className="absolute left-1 xs:left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
-          onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
-        >
-          <LuChevronLeft />
-        </button>
-        <button
-          className="absolute right-1 xs:right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
-          onClick={() => swiperRef.current?.slideNext()} // Slide to next
-        >
-          <LuChevronRight />
-        </button>
-            </>
-          )
-        }
+              className="absolute left-1 xs:left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+              onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
+            >
+              <LuChevronLeft />
+            </button>
+            <button
+              className="absolute right-1 xs:right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+              onClick={() => swiperRef.current?.slideNext()} // Slide to next
+            >
+              <LuChevronRight />
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
