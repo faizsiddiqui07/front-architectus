@@ -91,7 +91,6 @@ const ProjectPage = () => {
         <div key={index} className="w-full sm:w-[48%] lg:w-[48%] xl:w-[31.50%] -z-20">
           <div className="animate-pulse">
             <div className="h-60 bg-gray-700 rounded-md mb-4"></div>
-            <div className="h-4 bg-gray-600 rounded w-3/4 mx-auto"></div>
           </div>
         </div>
       ))}

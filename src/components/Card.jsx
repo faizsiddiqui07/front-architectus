@@ -89,23 +89,29 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
           ))}
         </Swiper>
         <button
-          className="absolute top-10 right-10 z-50 bg-black/50 text-white w-10 h-10 rounded-full text-2xl"
+          className="absolute top-56 xxs:top-52 xs:top-44 sm:top-36 md:top-20 lg:top-10 right-2 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
           onClick={onClose}
         >
           &times;
         </button>
-        <button
-          className="absolute left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+        {
+          images.length > 1 && (
+            <>
+            <button
+          className="absolute left-1 xs:left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
         >
           <LuChevronLeft />
         </button>
         <button
-          className="absolute right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
+          className="absolute right-1 xs:right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
           onClick={() => swiperRef.current?.slideNext()} // Slide to next
         >
           <LuChevronRight />
         </button>
+            </>
+          )
+        }
       </div>
     </div>
   );
