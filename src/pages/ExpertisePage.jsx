@@ -417,7 +417,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-4">
-              <AccordionTrigger className="font-semibold uppercase text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
                 Project Management
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
