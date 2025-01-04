@@ -34,7 +34,7 @@ const Home = () => {
       <BannerVideo />
 
       <LongCardProject
-        to="/projects"
+        to="/allCategory"
         image={image}
         heading="Projects"
         projectType="All Projects"

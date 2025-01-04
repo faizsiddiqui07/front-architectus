@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import ProjectPage from "./pages/ProjectPage";
 import ExpertisePage from "./pages/ExpertisePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -11,6 +10,8 @@ import People from "./pages/People";
 import PeopleDetails from "./pages/PeopleDetails";
 import SearchProduct from "./pages/SearchProduct";
 import Career from "./pages/Career";
+import CategoryWiseProject from "./pages/CategoryWiseProject";
+import CategoryProjectPage from "./pages/CategoryProjectPage";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<ProjectPage />} />
+        <Route path="/allCategory" element={<CategoryProjectPage />} />
+        <Route path="/category/:slug" element={<CategoryWiseProject />} />
         <Route path="/expertise" element={<ExpertisePage />} />
         <Route path="/career" element={<Career />} />
         <Route path="/about" element={<About />} />

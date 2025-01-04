@@ -7,6 +7,7 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { EffectFade } from "swiper/modules";
 
 const Card = ({ project }) => {
+  
   const [showSlider, setShowSlider] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
 
@@ -21,7 +22,7 @@ const Card = ({ project }) => {
 
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""; 
     };
   }, [showSlider]);
 

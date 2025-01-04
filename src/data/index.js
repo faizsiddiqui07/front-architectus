@@ -41,7 +41,7 @@ export const menuLinks = [
    {
       id: "0",
       title: "Projects",
-      url: "/projects"
+      url: "/allCategory"
    }, {
       id: "1",
       title: "Expertise & Services",

@@ -1,0 +1,135 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Card from "../components/Card";
+import { base_url } from "../config/config";
+import { useParams } from "react-router-dom";
+
+// Reusable Dropdown component
+// const Dropdown = ({ label, items, selected, onSelect }) => (
+//   <Menu as="div" className="relative w-[300px] inline-block text-left">
+//     <MenuButton className="flex justify-between w-full gap-x-1.5 bg-white px-5 py-2 text-sm font-light text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 rounded-full">
+//       {selected || label}
+//       <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
+//     </MenuButton>
+//     <MenuItems className="absolute right-0 z-10 mt-2 w-full max-h-64 overflow-y-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+//       <div className="py-1">
+//         {items.map((item, index) => (
+//           <MenuItem key={index}>
+//             {({ active }) => (
+//               <button
+//                 onClick={() => onSelect(item)}
+//                 className={`${
+//                   active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
+//                 } block px-4 py-2 text-sm w-full text-left`}
+//               >
+//                 {item}
+//               </button>
+//             )}
+//           </MenuItem>
+//         ))}
+//       </div>
+//     </MenuItems>
+//   </Menu>
+// );
+
+const CategoryWiseProject = () => {
+  const [projects, setProjects] = useState([]);
+//   const [filteredProjects, setFilteredProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+//   const [selectedType, setSelectedType] = useState("Categories");
+//   const [projectTypes, setProjectTypes] = useState([]);
+  const params = useParams()
+  
+
+  const getSingleCategoryProjects = async () => {
+    try {
+      const response = await axios.get(`${base_url}/api/projectDetails/${params.slug}`);
+      
+      const projectData = response.data.data;
+      
+      setProjects(projectData);
+    //   setFilteredProjects(projectData);
+
+    //   const types = ["Categories", ...new Set(projectData.map(p => p.projectType))];
+    //   setProjectTypes(types);
+    } catch (error) {
+      setError("Error fetching projects. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // Simulate loading for 2 seconds
+    setTimeout(() => {
+        getSingleCategoryProjects();
+    }, 100);
+  }, []);
+
+//   useEffect(() => {
+//     const filterProjects = () => {
+//       let filtered = projects;
+
+//       if (selectedType !== "Categories") {
+//         filtered = filtered.filter(project => project.projectType === selectedType);
+//       }
+
+//       setFilteredProjects(filtered);
+//     };
+
+//     filterProjects();
+//   }, [selectedType, projects]);
+
+  // Skeleton Loader
+  const renderSkeleton = () => (
+    <div className="w-full flex flex-wrap justify-center gap-6">
+      {[...Array(6)].map((_, index) => (
+        <div key={index} className="w-full sm:w-[48%] lg:w-[48%] xl:w-[31.50%] -z-20">
+          <div className="animate-pulse">
+            <div className="h-60 bg-gray-700 rounded-md mb-4"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="w-full relative top-[65px] sm:top-[73px]">
+      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f]">
+        <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 flex justify-between items-center flex-col xxs:flex-row border-b gap-3 border-[#7a78789f]">
+          <p className="text-white text-lg sm:text-xl md:text-2xl">{projects[0]?.projectType}</p>
+          {/* <Dropdown
+            label="Categories"
+            items={projectTypes}
+            selected={selectedType}
+            onSelect={setSelectedType}
+          /> */}
+        </div>
+      </div>
+      <main className="px-4 lg:px-10">
+        <section className="my-6 mb-36">
+          {loading ? (
+            renderSkeleton()
+          ) : error ? (
+            <p className="text-center text-red-500">{error}</p>
+          ) : projects.length === 0 ? (
+            <p className="text-center text-gray-500">No projects found.</p>
+          ) : (
+            <div className="w-full flex flex-wrap gap-6">
+              {projects.map((project, index) => (
+                <div key={index} className="w-full mx-auto sm:w-[48%] lg:w-[48%] xl:w-[31.50%] flex justify-between">
+                  <Card project={project} />
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default CategoryWiseProject;

@@ -26,7 +26,7 @@ const ExpertisePage = () => {
         <div className="w-[100%] text-white flex flex-wrap justify-between items-center">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="font-semibold uppercase text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
                 Architecture & Design
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -96,7 +96,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger className="font-semibold uppercase text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
                 Engineering & Technology
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -302,7 +302,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-3">
-              <AccordionTrigger className="font-semibold uppercase text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
                 Research & Innovation
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
