@@ -1,5 +1,5 @@
 import React from "react";
-import SliderMenuImage from "../assets/images/sliderOpen.jpg";
+import SliderMenuImage from "../assets/images/expertise.webp";
 
 import {
   Accordion,
@@ -17,16 +17,23 @@ const ExpertisePage = () => {
           className="w-full h-[350px] xs:h-[400px] md:h-[600px] object-cover"
           alt="Expertise"
         />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 65%, black 100%)",
+          }}
+        ></div>
         <h2 className="absolute bottom-7 text-white text-3xl sm:text-4xl px-4 lg:px-10 text-center sm:text-start w-full">
-          Expertise
+          Expertise & Services
         </h2>
       </div>
 
       <main className="px-4 lg:px-10 my-10">
         <div className="w-[100%] text-white flex flex-wrap justify-between items-center">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="multiple" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl px-2 text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
                 Architecture & Design
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -96,7 +103,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
                 Engineering & Technology
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -302,7 +309,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-3">
-              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
                 Research & Innovation
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -417,7 +424,7 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-4">
-              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl text-blue-300">
+              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
                 Project Management
               </AccordionTrigger>
               <AccordionContent className="ml-2 text-lg font-extralight">
@@ -456,7 +463,8 @@ const ExpertisePage = () => {
                     <span className="font-medium text-blue-200 mr-1">
                       Key Elements of Our Project Management Process:{" "}
                     </span>
-                    <br /><br />
+                    <br />
+                    <br />
                     <ul
                       style={{ listStyle: "circle" }}
                       className="list-inside ml-10"

@@ -45,9 +45,9 @@ const CategoryProjectPage = () => {
 
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
-      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-40">
+      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-20">
         <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 flex justify-between items-center flex-col xxs:flex-row border-b gap-3 border-[#7a78789f]">
-          <p className="text-white text-xl md:text-2xl">Categories</p>
+          <p className="text-white text-xl md:text-2xl">Projects</p>
         </div>
       </div>
       <main className="px-4 lg:px-10">
@@ -79,8 +79,8 @@ const CategoryProjectPage = () => {
                           "linear-gradient(to bottom, transparent 65%, black 100%)",
                       }}
                     ></div>
-                    <div className="p-4 absolute bottom-3 w-full">
-                      <p className="text-center text-white text-xl md:text-2xl font-medium">
+                    <div className="p-4 absolute bottom-0 w-full">
+                      <p className=" text-white text-xl md:text-2xl">
                         {category.projectType}
                       </p>
                     </div>

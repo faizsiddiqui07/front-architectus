@@ -1,11 +1,18 @@
 import React from "react";
-import image from "../assets/images/sliderOpen.jpg";
+import image from "../assets/images/about.webp";
 
 const About = () => {
   return (
     <div className="w-full">
       <div className="w-full h-[350px] xs:h-[400px] md:h-[600px] relative">
         <img src={image} className="w-full h-full object-cover" alt="" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 65%, black 100%)",
+          }}
+        ></div>
         <span className="w-full text-3xl text-center sm:text-start sm:text-4xl text-white font-normal absolute bottom-7 px-4 lg:px-10">
           About us
         </span>

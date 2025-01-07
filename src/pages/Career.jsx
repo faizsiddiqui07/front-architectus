@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import image from "../assets/images/sliderOpen.jpg";
+import image from "../assets/images/career.jpg";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
@@ -48,7 +48,7 @@ const Dropdown = ({ label, options, value, onSelect }) => (
 );
 
 const Career = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -61,7 +61,6 @@ const Career = () => {
     address: "",
     description: "",
   });
-  
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -84,10 +83,10 @@ const Career = () => {
       const data = await axios.post(`${base_url}/api/uploadCarrers`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      
+
       if (data.data.success) {
-        toast.success(data.data.message)
-        navigate("/")
+        toast.success(data.data.message);
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -97,171 +96,184 @@ const Career = () => {
   return (
     <div className="w-full">
       <div className="w-full h-[350px] xs:h-[400px] md:h-[600px] relative">
-        <img src={image} className="w-full h-full object-cover" alt="Career" />
+        <img
+          src={image}
+          className="w-full h-full object-cover object-top"
+          alt="Career"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 65%, black 100%)",
+          }}
+        ></div>
         <span className="text-4xl sm:text-4xl text-white font-normal absolute bottom-7 px-4 lg:px-10">
           Career
         </span>
       </div>
 
-      <div className="text-center px-4 lg:px-10">
-        <p className="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-10 text-white font-extralight">
-          Foster + Partners welcomes designers, innovators, makers, and
-          pioneering trailblazers to join the practice.
-          <br />
-          <br />
-          We want to work with the best talent from across the industry and
-          develop our people to grow within our practice. With people from
-          diverse backgrounds, we nurture innovation and flexibility to deliver
-          extraordinary projects.
-        </p>
-      </div>
+      <div className="w-full flex flex-col lg:flex-row justify-between gap-5 my-14 px-4 lg:px-10">
+        <div className="text-center w-full lg:w-[40%]">
+          <p className="text-white font-extralight xs:px-10">
+            Architectus Bureau welcomes designers, innovators, makers, and
+            pioneering trailblazers to join the practice.
+            <br />
+            <br />
+            We want to work with the best talent from across the industry and
+            develop our people to grow within our practice. With people from
+            diverse backgrounds, we nurture innovation and flexibility to
+            deliver extraordinary projects.
+          </p>
+        </div>
 
-      <div className="w-full sm:w-2/3 lg:w-1/2 mx-auto my-16 px-4 lg:px-10">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-6 shadow-md rounded-md flex flex-col items-center"
-        >
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-            Apply for a Position
-          </h3>
-
-          <div className="mb-4 w-full">
-            <label className="block text-gray-700 mb-2" htmlFor="email">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md outline-none"
-              required
-            />
-          </div>
-
-          <div className="mb-4 w-full">
-            <Dropdown
-              label="Salutation"
-              options={dropdownOptions.salutation}
-              value={formData.salutation}
-              onSelect={(value) => handleDropdownSelect("salutation", value)}
-            />
-          </div>
-
-          <div className="mb-4 flex w-full gap-4">
-            <div className="w-full">
-              <label className="block text-gray-700 mb-2" htmlFor="firstName">
-                First Name
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md outline-none"
-                required
-              />
-            </div>
-            <div className="w-full">
-              <label className="block text-gray-700 mb-2" htmlFor="lastName">
-                Last Name
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-md outline-none"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="mb-4 flex w-full gap-4">
-            <Dropdown
-              label="Gender"
-              options={dropdownOptions.gender}
-              value={formData.gender}
-              onSelect={(value) => handleDropdownSelect("gender", value)}
-            />
-
-            <Dropdown
-              label="Age"
-              options={dropdownOptions.age}
-              value={formData.age}
-              onSelect={(value) => handleDropdownSelect("age", value)}
-            />
-          </div>
-
-          <div className="mb-4 w-full">
-            <label className="block text-gray-700 mb-2" htmlFor="phoneNumber">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md outline-none"
-              required
-            />
-          </div>
-
-          <div className="mb-4 w-full">
-            <label className="block text-gray-700 mb-2" htmlFor="address">
-              Full Address
-            </label>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              value={formData.address}
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md outline-none"
-              required
-            />
-          </div>
-
-          <div className="mb-6 w-full">
-            <label className="block text-gray-700 mb-2" htmlFor="resume">
-              Resume
-            </label>
-            <input
-              type="file"
-              name="resume"
-              id="resume"
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-
-          <div className="mb-6 w-full">
-            <label className="block text-gray-700 mb-2" htmlFor="description">
-              Description
-            </label>
-            <textarea
-              rows={5}
-              type="text"
-              name="description"
-              id="description"
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="bg-red-600 text-white px-6 py-2 rounded-full"
+        <div className="w-full lg:w-[60%]">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-6 shadow-md rounded-md flex flex-col items-center"
           >
-            Submit Application
-          </button>
-        </form>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              Apply for a Position
+            </h3>
+
+            <div className="mb-4 w-full">
+              <label className="block text-gray-700 mb-2" htmlFor="email">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                required
+              />
+            </div>
+
+            <div className="mb-4 w-full">
+              <Dropdown
+                label="Salutation"
+                options={dropdownOptions.salutation}
+                value={formData.salutation}
+                onSelect={(value) => handleDropdownSelect("salutation", value)}
+              />
+            </div>
+
+            <div className="mb-4 flex w-full gap-4">
+              <div className="w-full">
+                <label className="block text-gray-700 mb-2" htmlFor="firstName">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                  required
+                />
+              </div>
+              <div className="w-full">
+                <label className="block text-gray-700 mb-2" htmlFor="lastName">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="mb-4 flex w-full gap-4">
+              <Dropdown
+                label="Gender"
+                options={dropdownOptions.gender}
+                value={formData.gender}
+                onSelect={(value) => handleDropdownSelect("gender", value)}
+              />
+
+              <Dropdown
+                label="Age"
+                options={dropdownOptions.age}
+                value={formData.age}
+                onSelect={(value) => handleDropdownSelect("age", value)}
+              />
+            </div>
+
+            <div className="mb-4 w-full">
+              <label className="block text-gray-700 mb-2" htmlFor="phoneNumber">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phoneNumber"
+                id="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                required
+              />
+            </div>
+
+            <div className="mb-4 w-full">
+              <label className="block text-gray-700 mb-2" htmlFor="address">
+                Full Address
+              </label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                value={formData.address}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md outline-none"
+                required
+              />
+            </div>
+
+            <div className="mb-6 w-full">
+              <label className="block text-gray-700 mb-2" htmlFor="resume">
+                Resume
+              </label>
+              <input
+                type="file"
+                name="resume"
+                id="resume"
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+
+            <div className="mb-6 w-full">
+              <label className="block text-gray-700 mb-2" htmlFor="description">
+                Description
+              </label>
+              <textarea
+                rows={5}
+                type="text"
+                name="description"
+                id="description"
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-gray-700 hover:bg-gray-800 transition text-white px-6 py-2 rounded-full"
+            >
+              Submit Application
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

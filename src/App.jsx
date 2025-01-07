@@ -7,7 +7,6 @@ import ExpertisePage from "./pages/ExpertisePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import People from "./pages/People";
-import PeopleDetails from "./pages/PeopleDetails";
 import SearchProduct from "./pages/SearchProduct";
 import Career from "./pages/Career";
 import CategoryWiseProject from "./pages/CategoryWiseProject";
@@ -26,16 +25,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/people" element={<People />} />
-        <Route path="/people/:slug" element={<PeopleDetails/>} />
         {/* <Route path="/search" element={<SearchProduct />} /> */}
         <Route
           path="*"
           element={
             <div className="py-32">
-              <h1 className="text-red-700 text-3xl text-center">
+              <h1 className="text-red-500 text-3xl text-center">
                 404 Page not found
               </h1>
-              <Link to="/" className="block text-center mt-5 cursor-pointer">
+              <Link to="/" className="block text-white text-center mt-5 cursor-pointer">
                 Go to Home
               </Link>
             </div>

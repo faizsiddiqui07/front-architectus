@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header
-      className={`h-16 sm:py-9 shadow-md bg-[#c8c8c8c6] transition-all duration-400 w-full z-40 fixed`}
+      className={`h-16 sm:py-9 shadow-md bg-[#c8c8c8ed] transition-all duration-400 w-full z-40 fixed`}
     >
       <div className="h-full mx-auto flex items-center justify-between px-4 lg:px-10">
         <div>

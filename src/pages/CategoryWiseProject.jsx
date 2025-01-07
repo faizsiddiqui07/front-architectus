@@ -4,7 +4,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Card from "../components/Card";
 import { base_url } from "../config/config";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 // Reusable Dropdown component
 // const Dropdown = ({ label, items, selected, onSelect }) => (
@@ -34,27 +34,72 @@ import { useParams } from "react-router-dom";
 //   </Menu>
 // );
 
+const categoryDescriptions = {
+  Residential: [
+    {
+      text: "Residential Architecture – Architectus Bureau",
+      size: "text-xl font-semibold text-blue-300",
+    },
+    {
+      text: "At Architectus Bureau, we specialize in crafting residential spaces that seamlessly blend functionality, comfort, and aesthetics. Our approach to Residential Architecture focuses on creating homes that reflect individual lifestyles, enhance daily living experiences, and stand the test of time.",
+      size: "text-[15px] text-white mt-2 font-extralight",
+    },
+    {
+      text: "Our Philosophy",
+      size: "text-lg mt-2 text-blue-300",
+    },
+    {
+      text: "Personalized Living Spaces",
+      size: "text-base text-white",
+    },
+    {
+      text: "We believe every home is unique and should resonate with the personality and needs of its residents. Our designs are tailored to create spaces that inspire, relax, and foster connections, ensuring each home becomes a sanctuary of comfort and style.",
+      size: "text-[15px] text-white font-extralight",
+    },
+    {
+      text: "Sustainability at the Core",
+      size: "text-base text-white mt-2",
+    },
+    {
+      text: "Incorporating sustainable practices, we design eco-friendly homes that promote energy efficiency, utilize green building materials, and harmonize with the surrounding environment.",
+      size: "text-[15px] text-white font-extralight",
+    },
+    {
+      text: "Innovative Solutions",
+      size: "text-base text-white mt-2",
+    },
+    {
+      text: "From modern smart homes to timeless traditional designs, we use innovative techniques and technologies to deliver homes that are not only visually stunning but also practical and future-ready.",
+      size: "text-[15px] text-white font-extralight",
+    },
+  ]
+};
+
 const CategoryWiseProject = () => {
   const [projects, setProjects] = useState([]);
-//   const [filteredProjects, setFilteredProjects] = useState([]);
+  const [categoryDescription, setCategoryDescription] = useState("");
+  //   const [filteredProjects, setFilteredProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-//   const [selectedType, setSelectedType] = useState("Categories");
-//   const [projectTypes, setProjectTypes] = useState([]);
-  const params = useParams()
-  
+  //   const [selectedType, setSelectedType] = useState("Categories");
+  //   const [projectTypes, setProjectTypes] = useState([]);
+  const params = useParams();
 
   const getSingleCategoryProjects = async () => {
     try {
-      const response = await axios.get(`${base_url}/api/projectDetails/${params.slug}`);
-      
-      const projectData = response.data.data;
-      
-      setProjects(projectData);
-    //   setFilteredProjects(projectData);
+      const response = await axios.get(
+        `${base_url}/api/projectDetails/${params.slug}`
+      );
 
-    //   const types = ["Categories", ...new Set(projectData.map(p => p.projectType))];
-    //   setProjectTypes(types);
+      const projectData = response.data.data;
+
+      setProjects(projectData);
+      const description = categoryDescriptions[params.slug];
+      setCategoryDescription(description);
+      //   setFilteredProjects(projectData);
+
+      //   const types = ["Categories", ...new Set(projectData.map(p => p.projectType))];
+      //   setProjectTypes(types);
     } catch (error) {
       setError("Error fetching projects. Please try again later.");
     } finally {
@@ -65,29 +110,32 @@ const CategoryWiseProject = () => {
   useEffect(() => {
     // Simulate loading for 2 seconds
     setTimeout(() => {
-        getSingleCategoryProjects();
+      getSingleCategoryProjects();
     }, 100);
-  }, []);
+  }, [[params.slug]]);
 
-//   useEffect(() => {
-//     const filterProjects = () => {
-//       let filtered = projects;
+  //   useEffect(() => {
+  //     const filterProjects = () => {
+  //       let filtered = projects;
 
-//       if (selectedType !== "Categories") {
-//         filtered = filtered.filter(project => project.projectType === selectedType);
-//       }
+  //       if (selectedType !== "Categories") {
+  //         filtered = filtered.filter(project => project.projectType === selectedType);
+  //       }
 
-//       setFilteredProjects(filtered);
-//     };
+  //       setFilteredProjects(filtered);
+  //     };
 
-//     filterProjects();
-//   }, [selectedType, projects]);
+  //     filterProjects();
+  //   }, [selectedType, projects]);
 
   // Skeleton Loader
   const renderSkeleton = () => (
     <div className="w-full flex flex-wrap justify-center gap-6">
       {[...Array(6)].map((_, index) => (
-        <div key={index} className="w-full sm:w-[48%] lg:w-[48%] xl:w-[31.50%] -z-20">
+        <div
+          key={index}
+          className="w-full sm:w-[48%] lg:w-[48%] xl:w-[31.50%] -z-20"
+        >
           <div className="animate-pulse">
             <div className="h-60 bg-gray-700 rounded-md mb-4"></div>
           </div>
@@ -100,7 +148,9 @@ const CategoryWiseProject = () => {
     <div className="w-full relative top-[65px] sm:top-[73px]">
       <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f]">
         <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 flex justify-between items-center flex-col xxs:flex-row border-b gap-3 border-[#7a78789f]">
-          <p className="text-white text-lg sm:text-xl md:text-2xl">{projects[0]?.projectType}</p>
+          <p className="text-white text-lg sm:text-xl md:text-2xl">
+            <Link to="/allCategory">Projects / {projects[0]?.projectType}</Link>
+          </p>
           {/* <Dropdown
             label="Categories"
             items={projectTypes}
@@ -110,6 +160,17 @@ const CategoryWiseProject = () => {
         </div>
       </div>
       <main className="px-4 lg:px-10">
+        <section className="my-6">
+          {Array.isArray(categoryDescription) ? (
+            categoryDescription.map((line, index) => (
+              <p key={index} className={`${line.size}`}>
+                {line.text}
+              </p>
+            ))
+          ) : (
+            <p className="text-white my-4">{categoryDescription}</p>
+          )}
+        </section>
         <section className="my-6 mb-36">
           {loading ? (
             renderSkeleton()
@@ -120,7 +181,10 @@ const CategoryWiseProject = () => {
           ) : (
             <div className="w-full flex flex-wrap gap-6">
               {projects.map((project, index) => (
-                <div key={index} className="w-full mx-auto sm:w-[48%] lg:w-[48%] xl:w-[31.50%] flex justify-between">
+                <div
+                  key={index}
+                  className="w-full mx-auto sm:w-[48%] lg:w-[48%] xl:w-[31.50%] flex justify-between"
+                >
                   <Card project={project} />
                 </div>
               ))}

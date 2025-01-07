@@ -16,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className=" mx-auto w-full px-4 lg:px-10 bg-[#c8c8c8c6]">
+    <footer className=" mx-auto w-full px-4 lg:px-10 bg-[#c8c8c8ed]">
       {/* Dotted line */}
         {/* <div className="border-b-2 w-full border-dotted mb-10"></div> */}
 
