@@ -2,13 +2,18 @@ import React from "react";
 import SliderMenuImage from "../assets/images/snow14.webp";
 import { Link } from "react-router-dom";
 import { menuLinks, socialLinks } from "../data";
+import scrollTop from "@/helpers/scrollTop";
 
-const MenuSlide = ({onClose}) => {
+const MenuSlide = ({ onClose }) => {
+  const handleClick = () => {
+    onClose();
+    scrollTop();
+  };
   return (
     <div className="relative ">
       <div className="">
         <img
-          src={SliderMenuImage} 
+          src={SliderMenuImage}
           className="fixed top-0 w-full h-screen object-cover bg-center bg-cover"
           alt=""
         />
@@ -21,7 +26,7 @@ const MenuSlide = ({onClose}) => {
                 <li key={index}>
                   <Link
                     to={item.url}
-                    onClick={onClose}
+                    onClick={handleClick}
                     className="text-2xl font-semibold text-slate-900 hover:text-slate-700"
                   >
                     {item.title}
@@ -34,7 +39,7 @@ const MenuSlide = ({onClose}) => {
             {socialLinks.map((item, index) => {
               return (
                 <li className="w-8 h-8 rounded-full bg-slate-700 hover:bg-gray-600 text-white flex justify-center items-center">
-                  <Link className="">{<item.icon/>}</Link>
+                  <Link to={item.url} target="_blank" className="">{<item.icon />}</Link>
                 </li>
               );
             })}

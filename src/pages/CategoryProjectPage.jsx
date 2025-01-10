@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { base_url } from "../config/config";
+import scrollTop from "@/helpers/scrollTop";
 
 const CategoryProjectPage = () => {
   const [projects, setProjects] = useState([]);
@@ -40,6 +41,7 @@ const CategoryProjectPage = () => {
   );
 
   const handleCategoryClick = (slug) => {
+    scrollTop()
     navigate(`/category/${slug}`);
   };
 
