@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SliderMenuImage from "../assets/images/expertise.webp";
 
 import {
@@ -9,6 +9,12 @@ import {
 } from "@/components/ui/accordion.jsx";
 
 const ExpertisePage = () => {
+  const [activeItem, setActiveItem] = useState(null);
+
+  const handleToggle = (value) => {
+    setActiveItem(activeItem === value ? null : value);
+  };
+
   return (
     <div className="w-full mb-36">
       <div className="w-full h-full relative">
@@ -33,10 +39,17 @@ const ExpertisePage = () => {
         <div className="w-[100%] text-white flex flex-wrap justify-between items-center">
           <Accordion type="multiple" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="font-semibold uppercase text-[22px] xs:text-2xl px-2 text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
+              <AccordionTrigger
+                onClick={() => handleToggle("item-1")}
+                className={`font-semibold uppercase text-xl xs:text-2xl px-2 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded ${
+                  activeItem === "item-1"
+                    ? "bg-[#c8c8c8ed] text-blue-900"
+                    : "text-blue-300"
+                }`}
+              >
                 Architecture & Design
               </AccordionTrigger>
-              <AccordionContent className="ml-2 text-lg font-extralight">
+              <AccordionContent className="ml-2 mt-2 text-lg font-extralight">
                 <p>
                   At Architectus Bureau, we believe that architecture is more
                   than just creating structures; it is about shaping
@@ -103,10 +116,17 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
+              <AccordionTrigger
+                onClick={() => handleToggle("item-2")}
+                className={`font-semibold uppercase text-xl xs:text-2xl px-2 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded ${
+                  activeItem === "item-2"
+                    ? "bg-[#c8c8c8ed] text-blue-900"
+                    : "text-blue-300"
+                }`}
+              >
                 Engineering & Technology
               </AccordionTrigger>
-              <AccordionContent className="ml-2 text-lg font-extralight">
+              <AccordionContent className="ml-2 mt-2 text-lg font-extralight">
                 <p>
                   At Architectus Bureau, we understand that modern architecture
                   and design are deeply rooted in the integration of advanced
@@ -309,10 +329,17 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-3">
-              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
+              <AccordionTrigger
+                onClick={() => handleToggle("item-3")}
+                className={`font-semibold uppercase text-xl xs:text-2xl px-2 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded ${
+                  activeItem === "item-3"
+                    ? "bg-[#c8c8c8ed] text-blue-900"
+                    : "text-blue-300"
+                }`}
+              >
                 Research & Innovation
               </AccordionTrigger>
-              <AccordionContent className="ml-2 text-lg font-extralight">
+              <AccordionContent className="ml-2 mt-2 text-lg font-extralight">
                 <p>
                   At Architectus Bureau, we believe that the foundation of
                   exceptional architecture and design is built upon continuous
@@ -424,10 +451,17 @@ const ExpertisePage = () => {
             </AccordionItem>
 
             <AccordionItem value="item-4">
-              <AccordionTrigger className="font-semibold uppercase px-2 text-[22px] xs:text-2xl text-blue-300 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded">
+              <AccordionTrigger
+                onClick={() => handleToggle("item-4")}
+                className={`font-semibold uppercase text-xl xs:text-2xl px-2 hover:text-blue-900 hover:bg-[#c8c8c8ed] rounded ${
+                  activeItem === "item-4"
+                    ? "bg-[#c8c8c8ed] text-blue-900"
+                    : "text-blue-300"
+                }`}
+              >
                 Project Management
               </AccordionTrigger>
-              <AccordionContent className="ml-2 text-lg font-extralight">
+              <AccordionContent className="ml-2 mt-2 text-lg font-extralight">
                 <p>
                   At Architectus Bureau, we understand that successful
                   architecture and design projects require meticulous planning,
