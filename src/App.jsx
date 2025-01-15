@@ -11,8 +11,18 @@ import SearchProduct from "./pages/SearchProduct";
 import Career from "./pages/Career";
 import CategoryWiseProject from "./pages/CategoryWiseProject";
 import CategoryProjectPage from "./pages/CategoryProjectPage";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1300,
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <Header />

@@ -19,38 +19,38 @@ const BannerVideo = () => {
   const videos = [
     {
       url: video1,
-      title: "News",
+      title: "First",
       description:
         "Apple opens new store at the heart of Shanghai’s Jing'an District",
-      link: "",
+      link: "/category/Recreational",
     },
     {
       url: video3,
-      title: "News",
+      title: "Second",
       description:
         "Apple opens new store at the heart of Shanghai’s Jing'an District",
-      link: "",
+      link: "/category/Residential",
     },
     {
       url: video4,
-      title: "News",
+      title: "Third",
       description:
         "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
-      link: "",
+      link: "/category/Humanitarian-&-Social",
     },
     {
       url: video5,
-      title: "News",
+      title: "Fourth",
       description:
         "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
-      link: "",
+      link: "/category/Residential",
     },
     {
       url: video6,
-      title: "News",
+      title: "Fifth",
       description:
         "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
-      link: "",
+      link: "/category/Residential",
     },
   ];
 
@@ -80,6 +80,7 @@ const BannerVideo = () => {
                       autoPlay
                       muted
                       loop
+                      playsInline
                     ></video>
                     <div
                       className="absolute inset-0"

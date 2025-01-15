@@ -115,7 +115,7 @@ const Career = () => {
 
       <div className="w-full flex flex-col lg:flex-row justify-between gap-5 my-14 px-4 lg:px-10">
         <div className="text-center w-full lg:w-[40%]">
-          <p className="text-white font-extralight xs:px-10">
+          <p data-aos="zoom-in-up" className="text-white font-extralight xs:px-10">
             Architectus Bureau welcomes designers, innovators, makers, and
             pioneering trailblazers to join the practice.
             <br />
@@ -127,7 +127,7 @@ const Career = () => {
           </p>
         </div>
 
-        <div className="w-full lg:w-[60%]">
+        <div data-aos="zoom-in-up" className="w-full lg:w-[60%]">
           <form
             onSubmit={handleSubmit}
             className="bg-white p-6 shadow-md rounded-md flex flex-col items-center"

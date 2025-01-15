@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col items-center px-4 pt-24 sm:pt-28">
       <div className="max-w-7xl w-full">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div data-aos="zoom-in-up" className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-white">
             Contact Us
           </h1>
@@ -19,7 +19,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
             {/* Contact Form */}
-            <div className="bg-white shadow-md rounded-lg p-6">
+            <div data-aos="zoom-in-up" className="bg-white shadow-md rounded-lg p-6">
               <form className="space-y-6">
                 <div>
                   <label
@@ -76,7 +76,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="bg-gray-100 shadow-md rounded-lg p-6 space-y-6 mb-8 lg:mb-0">
+            <div data-aos="zoom-in-up" className="bg-gray-100 shadow-md rounded-lg p-6 space-y-6 mb-8 lg:mb-0 flex flex-col justify-center items-center text-center">
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">
                   Our Office

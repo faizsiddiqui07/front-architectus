@@ -33,7 +33,7 @@ const Card = ({ project }) => {
 
   return (
     <>
-      <div className="block w-full cursor-pointer">
+      <div  className="block w-full cursor-pointer">
         <div className="bg-white shadow-lg rounded-md overflow-hidden">
           <img
             src={project.projectImage?.[0]}

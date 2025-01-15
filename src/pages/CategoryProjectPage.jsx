@@ -41,7 +41,7 @@ const CategoryProjectPage = () => {
   );
 
   const handleCategoryClick = (slug) => {
-    scrollTop()
+    scrollTop();
     navigate(`/category/${slug}`);
   };
 
@@ -64,6 +64,7 @@ const CategoryProjectPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {groupedCategories.map((category, index) => (
                 <div
+                  data-aos="zoom-in-up"
                   key={index}
                   className="cursor-pointer"
                   onClick={() => handleCategoryClick(category.slug)}
@@ -72,7 +73,7 @@ const CategoryProjectPage = () => {
                     <img
                       src={category.projectImage}
                       alt={category.projectType}
-                      className="w-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                     <div
                       className="absolute inset-0"

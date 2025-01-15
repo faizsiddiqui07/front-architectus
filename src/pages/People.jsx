@@ -28,7 +28,7 @@ const People = () => {
       </div>
 
       {/* Hero Image with Text Overlay */}
-      <div className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] overflow-hidden mb-16">
+      <div data-aos="zoom-in-up" className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] overflow-hidden mb-16">
         <img
           src={teamImage}
           alt="Team"
@@ -49,6 +49,7 @@ const People = () => {
 // Reusable ArticleCard Component
 const ArticleCard = ({ image, title, position, description, url }) => (
   <Link
+  data-aos="zoom-in-up"
     to={url}
     className="group w-full md:w-1/2 relative flex flex-col items-center rounded-lg overflow-hidden"
   >
