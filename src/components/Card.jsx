@@ -74,7 +74,7 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
           initialSlide={startIndex}
           slidesPerView={1}
           loop={true}
-          effect="fade"
+          // effect="fade"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[EffectFade]}
           className="mySwiper"
@@ -84,12 +84,12 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
               <img
                 src={image}
                 alt={`Slide ${index}`}
-                className="w-full h-full object-contain"
+                className="w-full h-[300px] xs:h-[700px] object-contain object-center"
               />
             </SwiperSlide>
           ))}
           <button
-            className="absolute top-4 sm:top-6 md:top-10 lg:top-10 right-2 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
+            className="absolute top-12 xxs:top-10 xs:top-52 sm:top-48 md:top-36 lg:top-24 xl:top-14 right-3 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
             onClick={onClose}
           >
             &times;
