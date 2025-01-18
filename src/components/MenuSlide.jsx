@@ -29,7 +29,7 @@ const MenuSlide = ({ onClose }) => {
             {menuLinks.map((item, index) => (
               <li key={index}>
                 <div
-                  onClick={() => handleClick(item.url)} // Make sure this is a function reference
+                  onClick={() => handleClick(item.url)}
                   className="text-2xl font-semibold text-slate-900 hover:text-slate-700"
                 >
                   {item.title}

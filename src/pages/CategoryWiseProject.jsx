@@ -793,7 +793,7 @@ const CategoryWiseProject = () => {
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
       <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f]">
-        <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 flex justify-between items-center flex-col xxs:flex-row border-b gap-3 border-[#7a78789f]">
+        <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 border-b gap-3 border-[#7a78789f]">
           <p className="text-white text-lg sm:text-xl md:text-2xl">
             <Link to="/allCategory">Projects </Link> / {projects[0]?.projectType}
           </p>

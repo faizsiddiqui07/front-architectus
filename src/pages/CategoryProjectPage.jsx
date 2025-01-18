@@ -23,7 +23,7 @@ const CategoryProjectPage = () => {
   };
 
   useEffect(() => {
-    getProjects();
+    getProjects();      
   }, []);
 
   // Group projects by category
@@ -42,16 +42,14 @@ const CategoryProjectPage = () => {
 
   const handleCategoryClick = (slug) => {
     scrollTop();
-    navigate(`/category/${slug}`);
+    navigate(`/category/${slug}`); 
   };
-
-  const heightMap = [12, 8, 9, 11, 12, 10];
 
   return (
     <div className="w-full relative top-[65px] sm:top-[73px]">
       {/* Sticky Header */}
       <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-20">
-        <div className="w-full py-3 sm:py-5 px-4 lg:px-10 flex justify-between items-center flex-col sm:flex-row border-b gap-3 border-[#7a78789f]">
+        <div className="w-full py-3 sm:py-5 px-4 lg:px-10 border-b gap-3 border-[#7a78789f]">
           <p className="text-white text-xl md:text-2xl">Projects</p>
         </div>
       </div>
@@ -65,20 +63,12 @@ const CategoryProjectPage = () => {
           ) : groupedCategories.length === 0 ? (
             <p className="text-center text-gray-500">No categories found.</p>
           ) : (
-            <div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              style={{
-                gridAutoRows: "10px",
-              }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {groupedCategories.map((category, index) => (
                 <div
                   key={index}
                   className="relative cursor-pointer group"
                   onClick={() => handleCategoryClick(category.slug)}
-                  style={{
-                    gridRowEnd: `span ${heightMap[index % heightMap.length]}`, // Use modulo to cycle through heightMap
-                  }}
                 >
                   <div className="relative shadow-lg rounded-md h-full">
                     <img
@@ -87,7 +77,13 @@ const CategoryProjectPage = () => {
                       className="w-full h-full object-cover rounded-md"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+                    <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, transparent 65%, black 100%)",
+                  }}
+                ></div>
                     <div className="absolute bottom-4 left-4 text-white">
                       <p className="text-lg sm:text-xl md:text-2xl">
                         {category.projectType}
