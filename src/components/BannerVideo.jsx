@@ -90,7 +90,7 @@ const BannerVideo = () => {
                       }}
                     ></div>
                   </div>
-                  <div className="absolute bottom-24 px-5 lg:bottom-12 w-full lg:w-[45%] lg:p-12 p-0 text-center lg:text-left text-white">
+                  <div className="absolute bottom-24 px-5 lg:bottom-12 w-full lg:w-[48%] lg:p-12 p-0 text-center lg:text-left text-white">
                     <h1 className="text-md mb-3">{videoURL.title}</h1>
                     <h1 className="text-xl font-medium">
                       {videoURL.description}
