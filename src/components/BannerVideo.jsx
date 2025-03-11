@@ -21,35 +21,35 @@ const BannerVideo = () => {
       url: video1,
       title: "First",
       description:
-        "Apple opens new store at the heart of Shanghai’s Jing'an District",
+        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
       link: "/category/Recreational",
     },
     {
       url: video3,
       title: "Second",
       description:
-        "Apple opens new store at the heart of Shanghai’s Jing'an District",
+        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
       link: "/category/Residential",
     },
     {
       url: video4,
       title: "Third",
       description:
-        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
+        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
       link: "/category/Humanitarian-&-Social",
     },
     {
       url: video5,
       title: "Fourth",
       description:
-        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
+        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
       link: "/category/Residential",
     },
     {
       url: video6,
       title: "Fifth",
       description:
-        "First ever Foster + Partners exhibition in Korea opens at Seoul Museum of Art",
+        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
       link: "/category/Residential",
     },
   ];
