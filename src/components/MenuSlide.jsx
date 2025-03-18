@@ -30,7 +30,7 @@ const MenuSlide = ({ onClose }) => {
               <li key={index}>
                 <div
                   onClick={() => handleClick(item.url)}
-                  className="text-2xl font-semibold text-slate-900 hover:text-slate-700"
+                  className="text-2xl font-semibold text-slate-900 hover:text-slate-700 cursor-pointer"
                 >
                   {item.title}
                 </div>
@@ -41,7 +41,7 @@ const MenuSlide = ({ onClose }) => {
             {socialLinks.map((item, index) => (
               <li
                 key={index}
-                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-gray-600 text-white flex justify-center items-center"
+                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-gray-600 text-white flex justify-center items-center cursor-pointer"
               >
                 <Link to={item.url} target="_blank">
                   <item.icon />
