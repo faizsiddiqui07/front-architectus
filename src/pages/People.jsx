@@ -11,13 +11,13 @@ const People = () => {
         <ArticleCard
           image={SirImage}
           title="Khaan Aamir"
-          position="CEO & Founder"
+          position="CEO & Founder | Principle Architect"
           description="Leading with a vision for innovation, Khaan drives the company forward with a focus on geometric precision and cutting-edge solutions. "
         />
         <ArticleCard
           image={MamImage}
           title="Kalpana Saini"
-          position="COO & Founder"
+          position="President & Founder | Principle Architect"
           description="Kalpana ensures operational excellence, blending clarity and creativity to shape a dynamic, forward-thinking team."
         />
       </div>
@@ -65,7 +65,7 @@ const ArticleCard = ({ image, title, position, description }) => (
 
     {/* Content */}
     <div className="absolute bottom-0 p-6 w-full text-white transition-all duration-300 ">
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-wide">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-wide border-b-2 inline">
         {title}
       </h2>
       <p className="text-lg md:text-xl text-gray-200 mt-1">{position}</p>
