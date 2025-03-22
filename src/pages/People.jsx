@@ -1,80 +1,79 @@
 import React from "react";
 import teamImage from "../assets/images/group-business-people-meeting.jpg";
-import ownerImage from "../assets/images/workers-it-company-working-computer.jpg";
-import { Link } from "react-router-dom";
+import MamImage from "../assets/images/Mam.jpg";
+import SirImage from "../assets/images/Sir.jpeg";
 
 const People = () => {
-
   return (
-    <section className="w-full">
-
+    <section className="w-full min-h-screen ">
       {/* Team and Founder Section */}
-      <div className="w-full flex flex-col md:flex-row gap-10 pt-28 pb-12 px-6 lg:px-12">
-        {/* Founder Section */}
+      <div className="container mx-auto flex flex-col md:flex-row gap-12 pb-16 pt-24 sm:pt-28 px-6 lg:px-12">
         <ArticleCard
-          image={ownerImage}
+          image={SirImage}
           title="Khaan Aamir"
           position="CEO & Founder"
-          description="Emphasizing straight lines and geometric shapes, the design features simple, unadorned forms that create a sense of order and clarity. Cutting-edge design elements, such as cantilevered structures and unconventional shapes, add visual interest and underscore the residence's contemporary nature."
+          description="Leading with a vision for innovation, Khaan drives the company forward with a focus on geometric precision and cutting-edge solutions. "
         />
-
-        {/* Team Section */}
         <ArticleCard
-          image={ownerImage}
+          image={MamImage}
           title="Kalpana Saini"
           position="COO & Founder"
-          description="Emphasizing straight lines and geometric shapes, the design features simple, unadorned forms that create a sense of order and clarity. Cutting-edge design elements, such as cantilevered structures and unconventional shapes, add visual interest and underscore the residence's contemporary nature."
+          description="Kalpana ensures operational excellence, blending clarity and creativity to shape a dynamic, forward-thinking team."
         />
       </div>
 
-      {/* Hero Image with Text Overlay */}
-      <div data-aos="zoom-in-up" className="relative w-full h-[300px] sm:h-[400px] md:h-[600px] overflow-hidden mb-16">
+      {/* Hero Image Section */}
+      <div
+        data-aos="fade-up"
+        className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden mb-20 shadow-2xl"
+      >
         <img
           src={teamImage}
-          alt="Team"
-          className="w-full h-full object-cover object-top"
+          alt="Our Team"
+          className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent 65%, black 100%)",
-          }}
-        ></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent flex items-end">
+          <div className="text-center text-white p-8 w-full">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+              Our Team
+            </h1>
+            <p className="text-lg md:text-xl mt-2 opacity-90">
+              United in purpose, diverse in talent.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 // Reusable ArticleCard Component
-const ArticleCard = ({ image, title, position, description, url }) => (
-  <Link
-  data-aos="zoom-in-up"
-    to={url}
-    className="group w-full md:w-1/2 relative flex flex-col items-center rounded-lg overflow-hidden"
+const ArticleCard = ({ image, title, position, description }) => (
+  <div
+    data-aos="fade-up"
+    className="group w-full md:w-1/2 relative rounded-xl overflow-hidden shadow-lg transform transition-all duration-500 hover:-translate-y-2"
   >
     {/* Image */}
     <img
       src={image}
       alt={title}
-      className="w-full h-[400px] object-cover rounded-lg transition-opacity duration-300 group-hover:opacity-20"
+      className="w-full h-[450px] object-cover object-top transition-all duration-500 group-hover:scale-110"
     />
 
     {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300 group-hover:bg-black/50"></div>
 
-    {/* Title and Position (Hidden on hover) */}
-    <div className="absolute bottom-12 text-center text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-      <h2 className="text-2xl font-bold">{title}</h2>
-      <p className="text-lg mt-1">{position}</p>
+    {/* Content */}
+    <div className="absolute bottom-0 p-6 w-full text-white transition-all duration-300 ">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-wide">
+        {title}
+      </h2>
+      <p className="text-lg md:text-xl text-gray-200 mt-1">{position}</p>
+      <p className="mt-4 text-base ">
+        {description}
+      </p>
     </div>
-
-    {/* Description (Visible on hover) */}
-    <div className="absolute inset-0 flex items-center justify-center text-white px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <p className="text-center text-base md:text-lg">{description}</p>
-    </div>
-  </Link>
+  </div>
 );
-
 
 export default People;
