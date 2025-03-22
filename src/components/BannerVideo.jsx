@@ -22,35 +22,35 @@ const BannerVideo = () => {
       title: "First",
       description:
         "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
-      link: "/category/Recreational",
+      // link: "/category/Recreational",
     },
     {
       url: video3,
       title: "Second",
       description:
         "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
-      link: "/category/Residential",
+      // link: "/category/Residential",
     },
     {
       url: video4,
       title: "Third",
       description:
         "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
-      link: "/category/Humanitarian-&-Social",
+      // link: "/category/Humanitarian-&-Social",
     },
     {
       url: video5,
       title: "Fourth",
       description:
         "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
-      link: "/category/Residential",
+      // link: "/category/Residential",
     },
     {
       url: video6,
       title: "Fifth",
       description:
         "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
-      link: "/category/Residential",
+      // link: "/category/Residential",
     },
   ];
 
@@ -72,7 +72,7 @@ const BannerVideo = () => {
           {videos.map((videoURL, index) => (
             <div className="relative" key={videoURL.url + index}>
               <SwiperSlide>
-                <Link to={videoURL.link}>
+                <div>
                   <div className="w-full h-[100vh] object-cover relative">
                     <video
                       src={videoURL.url}
@@ -96,7 +96,7 @@ const BannerVideo = () => {
                       {videoURL.description}
                     </h1>
                   </div>
-                </Link>
+                </div>
               </SwiperSlide>
             </div>
           ))}
