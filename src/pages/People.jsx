@@ -57,11 +57,11 @@ const ArticleCard = ({ image, title, position, description }) => (
     <img
       src={image}
       alt={title}
-      className="w-full h-[450px] object-cover object-top transition-all duration-500 group-hover:scale-110"
+      className="w-full h-[450px] object-cover object-top transition-all duration-500 group-hover:scale-100 sm:group-hover:scale-110"
     />
 
     {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300 group-hover:bg-black/50"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300 sm:group-hover:bg-black/50"></div>
 
     {/* Content */}
     <div className="absolute bottom-0 p-6 w-full text-white transition-all duration-300 ">
