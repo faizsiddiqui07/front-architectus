@@ -21,35 +21,35 @@ const BannerVideo = () => {
       url: video1,
       title: "First",
       description:
-        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
+        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Recreational",
     },
     {
       url: video3,
       title: "Second",
       description:
-        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
+        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
     },
     {
       url: video4,
       title: "Third",
       description:
-        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
+        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Humanitarian-&-Social",
     },
     {
       url: video5,
       title: "Fourth",
       description:
-        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
+        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
     },
     {
       url: video6,
       title: "Fifth",
       description:
-        "ARCHITECTUS BUREAU : Khaaan Aamir + Kalpana Saini & Co.",
+        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
     },
   ];
