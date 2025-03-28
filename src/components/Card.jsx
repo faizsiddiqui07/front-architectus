@@ -36,7 +36,7 @@ const Card = ({ project }) => {
       <div  className="block w-full cursor-pointer">
         <div className="bg-white shadow-lg rounded-md overflow-hidden">
           <img
-            src={project.projectImage?.[0]}
+            src={project?.projectImage?.[0]?.url || project?.projectImage?.[0]}
             alt={project.projectName}
             className="w-full h-full object-cover"
             onClick={() => handleImageClick(0)}
@@ -46,7 +46,7 @@ const Card = ({ project }) => {
 
       {showSlider && (
         <ImageSliderPopup
-          images={project.projectImage}
+          images={project?.projectImage}
           startIndex={sliderIndex}
           onClose={() => setShowSlider(false)}
         />
