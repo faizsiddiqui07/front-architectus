@@ -19,35 +19,30 @@ const BannerVideo = () => {
   const videos = [
     {
       url: video1,
-      title: "First",
       description:
-        "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
+        "Timeless elegance, where every line, detail, and material speaks of refinement. It merges classical language with contemporary spatial needs, creating a space that is grand, serene, and enduring",
       // link: "/category/Recreational",
     },
     {
       url: video3,
-      title: "Second",
       description:
         "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
     },
     {
       url: video4,
-      title: "Third",
       description:
         "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Humanitarian-&-Social",
     },
     {
       url: video5,
-      title: "Fourth",
       description:
         "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
     },
     {
       url: video6,
-      title: "Fifth",
       description:
         "ARCHITECTUS BUREAU : Khaan Aamir + Kalpana Saini & Co.",
       // link: "/category/Residential",
@@ -90,9 +85,8 @@ const BannerVideo = () => {
                       }}
                     ></div>
                   </div>
-                  <div className="absolute bottom-24 px-5 lg:bottom-12 w-full lg:w-[48%] lg:p-12 p-0 text-center lg:text-left text-white">
-                    <h1 className="text-md mb-3">{videoURL.title}</h1>
-                    <h1 className="text-xl font-medium">
+                  <div className="absolute bottom-24 px-5 lg:bottom-12 w-full lg:w-[75%] lg:p-12 p-0 text-center lg:text-left text-white mx-auto">
+                    <h1 className="text-base font-light">
                       {videoURL.description}
                     </h1>
                   </div>
