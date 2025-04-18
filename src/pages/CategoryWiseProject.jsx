@@ -377,7 +377,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Cultural & Religious": [
+  "Cultural-&-Religious": [
     {
       text: "Cultural & Religious Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
