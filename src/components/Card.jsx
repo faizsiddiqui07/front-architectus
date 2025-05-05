@@ -2,42 +2,34 @@ import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/effect-fade";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { EffectFade } from "swiper/modules";
 
 const Card = ({ project }) => {
-  
   const [showSlider, setShowSlider] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
-
-  useEffect(() => {
-    if (showSlider) {
-      // Disable background scrolling
-      document.body.style.overflow = "hidden";
-    } else {
-      // Enable background scrolling
-      document.body.style.overflow = "";
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = ""; 
-    };
-  }, [showSlider]);
 
   const handleImageClick = (index) => {
     setSliderIndex(index);
     setShowSlider(true);
   };
 
+  useEffect(() => {
+    document.body.style.overflow = showSlider ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showSlider]);
+
+  const coverImage = project?.projectImage?.[0]?.url || project?.projectImage?.[0];
+
   return (
     <>
-      <div  className="block w-full cursor-pointer">
-        <div className="bg-white shadow-lg rounded-md overflow-hidden">
+      <div className="block w-full cursor-pointer">
+        <div className="bg-white shadow-md rounded-md overflow-hidden">
           <img
-            src={project?.projectImage?.[0]?.url || project?.projectImage?.[0]}
-            alt={project.projectName}
+            src={coverImage}
+            alt={project.projectName || "Project Image"}
             className="w-full h-full object-cover"
             onClick={() => handleImageClick(0)}
           />
@@ -46,7 +38,7 @@ const Card = ({ project }) => {
 
       {showSlider && (
         <ImageSliderPopup
-          images={project?.projectImage}
+          images={project.projectImage}
           startIndex={sliderIndex}
           onClose={() => setShowSlider(false)}
         />
@@ -55,13 +47,11 @@ const Card = ({ project }) => {
   );
 };
 
-const ImageSliderPopup = ({ images, startIndex, onClose }) => {
+const ImageSliderPopup = ({ images = [], startIndex, onClose }) => {
   const swiperRef = useRef(null);
 
   const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
+    if (e.target === e.currentTarget) onClose();
   };
 
   return (
@@ -69,46 +59,49 @@ const ImageSliderPopup = ({ images, startIndex, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
       onClick={handleOverlayClick}
     >
-      <div className="relative max-w-6xl w-full h-[90%] flex items-center justify-center xs:px-4">
+      <div className="relative max-w-6xl w-full h-[90%] flex items-center justify-center px-4">
         <Swiper
           initialSlide={startIndex}
           slidesPerView={1}
-          loop={true}
-          // effect="fade"
+          loop
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[EffectFade]}
-          className="mySwiper"
+          className="w-full h-full"
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
               <img
-                src={image}
-                alt={`Slide ${index}`}
-                className="w-full h-[300px] xs:h-[700px] object-contain object-center"
+                src={image?.url || image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-[300px] xs:h-[700px] object-contain"
               />
             </SwiperSlide>
           ))}
-          <button
-            className="absolute top-12 xxs:top-10 xs:top-52 sm:top-48 md:top-36 lg:top-24 xl:top-14 right-3 xs:right-10 z-50 bg-black/50 text-white w-7 xs:w-10 h-7 xs:h-10 rounded-full text-xl xs:text-2xl"
-            onClick={onClose}
-          >
-            &times;
-          </button>
         </Swiper>
+
+        <button
+          onClick={onClose}
+          className="absolute top-16 right-12 text-white bg-black/60 hover:bg-black/80 rounded-full w-10 h-10 flex items-center justify-center text-xl z-50"
+          aria-label="Close slider"
+        >
+          &times;
+        </button>
 
         {images.length > 1 && (
           <>
             <button
-              className="absolute left-1 xs:left-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
-              onClick={() => swiperRef.current?.slidePrev()} // Slide to previous
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
+              aria-label="Previous slide"
             >
-              <LuChevronLeft />
+              <LuChevronLeft size={15} />
             </button>
             <button
-              className="absolute right-1 xs:right-5 top-1/2 transform z-10 -translate-y-1/2 bg-black/50 text-white px-3 py-3 rounded-full"
-              onClick={() => swiperRef.current?.slideNext()} // Slide to next
+              onClick={() => swiperRef.current?.slideNext()}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
+              aria-label="Next slide"
             >
-              <LuChevronRight />
+              <LuChevronRight size={15} />
             </button>
           </>
         )}

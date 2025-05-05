@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Card from "../components/Card";
 import { base_url } from "../config/config";
 import { Link, useParams } from "react-router-dom";
@@ -35,7 +33,7 @@ import { Link, useParams } from "react-router-dom";
 // );
 
 const categoryDescriptions = {
-  "Residential": [
+  Residential: [
     {
       text: "Residential Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -149,7 +147,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Recreational": [
+  Recreational: [
     {
       text: "Recreational Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -263,7 +261,7 @@ const categoryDescriptions = {
   //     size: "text-[15px] text-white font-extralight",
   //   },
   // ],
-  "Healthcare": [
+  Healthcare: [
     {
       text: "Healthcare Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -301,7 +299,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Institutional": [
+  Institutional: [
     {
       text: "Institutional Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -339,7 +337,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Landscape": [
+  Landscape: [
     {
       text: "Landscape Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -415,7 +413,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Industrial": [
+  Industrial: [
     {
       text: "Industrial Architecture – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -643,7 +641,7 @@ const categoryDescriptions = {
       size: "text-[15px] text-white font-extralight",
     },
   ],
-  "Interior": [
+  Interior: [
     {
       text: "Interior Design – Architectus Bureau",
       size: "text-xl font-semibold text-blue-300",
@@ -724,28 +722,19 @@ const categoryDescriptions = {
 const CategoryWiseProject = () => {
   const [projects, setProjects] = useState([]);
   const [categoryDescription, setCategoryDescription] = useState("");
-  //   const [filteredProjects, setFilteredProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  //   const [selectedType, setSelectedType] = useState("Categories");
-  //   const [projectTypes, setProjectTypes] = useState([]);
   const params = useParams();
 
   const getSingleCategoryProjects = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `${base_url}/api/projectDetails/${params.slug}`
       );
-
-      const projectData = response.data.data;
-
-      setProjects(projectData);
+      setProjects(response.data.data || []);
       const description = categoryDescriptions[params.slug];
       setCategoryDescription(description);
-      //   setFilteredProjects(projectData);
-
-      //   const types = ["Categories", ...new Set(projectData.map(p => p.projectType))];
-      //   setProjectTypes(types);
     } catch (error) {
       setError("Error fetching projects. Please try again later.");
     } finally {
@@ -754,34 +743,13 @@ const CategoryWiseProject = () => {
   };
 
   useEffect(() => {
-    // Simulate loading for 2 seconds
-    setTimeout(() => {
-      getSingleCategoryProjects();
-    }, 100);
-  }, [[params.slug]]);
+    getSingleCategoryProjects();
+  }, [params.slug]);
 
-  //   useEffect(() => {
-  //     const filterProjects = () => {
-  //       let filtered = projects;
-
-  //       if (selectedType !== "Categories") {
-  //         filtered = filtered.filter(project => project.projectType === selectedType);
-  //       }
-
-  //       setFilteredProjects(filtered);
-  //     };
-
-  //     filterProjects();
-  //   }, [selectedType, projects]);
-
-  // Skeleton Loader
   const renderSkeleton = () => (
     <div className="w-full flex flex-wrap justify-center gap-6">
       {[...Array(6)].map((_, index) => (
-        <div
-          key={index}
-          className="w-full sm:w-[48%] lg:w-[48%] xl:w-[31.50%] -z-20"
-        >
+        <div key={index} className="w-full sm:w-[48%] xl:w-[31.5%]">
           <div className="animate-pulse">
             <div className="h-60 bg-gray-700 rounded-md mb-4"></div>
           </div>
@@ -791,32 +759,34 @@ const CategoryWiseProject = () => {
   );
 
   return (
-    <div className="w-full relative top-[65px] sm:top-[73px]">
-      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f]">
-        <div className="w-full py-3 xxs:py-5 px-4 lg:px-10 border-b gap-3 border-[#7a78789f]">
-          <p className="text-white text-lg sm:text-xl md:text-2xl">
-            <Link to="/allCategory">Projects </Link> / {projects[0]?.projectType}
+    <div className="w-full relative top-[65px] sm:top-[73px] bg-[#0f0f0f] text-white">
+      {/* Sticky Header */}
+      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-20">
+        <div className="w-full py-4 px-4 lg:px-10 border-b border-[#7a78789f]">
+          <p className="text-xl md:text-2xl">
+            <Link to="/allCategory" className="text-gray-300 hover:underline">
+              Projects
+            </Link>{" "}
+            / {projects[0]?.projectType}
           </p>
-          {/* <Dropdown
-            label="Categories"
-            items={projectTypes}
-            selected={selectedType}
-            onSelect={setSelectedType}
-          /> */}
         </div>
       </div>
+
+      {/* Description */}
       <main className="px-4 lg:px-10">
         <section className="my-6">
           {Array.isArray(categoryDescription) ? (
-            categoryDescription.map((line, index) => (
-              <p key={index} className={`${line.size}`}>
+            categoryDescription.map((line, idx) => (
+              <p key={idx} className={line.size}>
                 {line.text}
               </p>
             ))
           ) : (
-            <p className="text-white my-4">{categoryDescription}</p>
+            <p className="text-gray-300 my-4">{categoryDescription}</p>
           )}
         </section>
+
+        {/* Project Cards */}
         <section className="my-6 mb-36">
           {loading ? (
             renderSkeleton()
@@ -825,12 +795,9 @@ const CategoryWiseProject = () => {
           ) : projects.length === 0 ? (
             <p className="text-center text-gray-500">No projects found.</p>
           ) : (
-            <div className="w-full flex flex-wrap gap-6">
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="w-full mx-auto sm:w-[48%] lg:w-[48%] xl:w-[31.50%] flex justify-between"
-                >
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+              {projects.map((project) => (
+                <div key={project._id} className="break-inside-avoid mb-4">
                   <Card project={project} />
                 </div>
               ))}

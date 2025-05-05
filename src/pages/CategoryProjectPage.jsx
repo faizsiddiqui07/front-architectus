@@ -7,7 +7,7 @@ import scrollTop from "@/helpers/scrollTop";
 const CategoryProjectPage = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
   const navigate = useNavigate();
 
   const getProjects = async () => {
