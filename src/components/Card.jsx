@@ -21,7 +21,8 @@ const Card = ({ project }) => {
     };
   }, [showSlider]);
 
-  const coverImage = project?.projectImage?.[0]?.url || project?.projectImage?.[0];
+  const coverImage =
+    project?.projectImage?.[0]?.url || project?.projectImage?.[0];
 
   return (
     <>
@@ -56,7 +57,7 @@ const ImageSliderPopup = ({ images = [], startIndex, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
       onClick={handleOverlayClick}
     >
       <div className="relative max-w-6xl w-full h-[90%] flex items-center justify-center px-4">
@@ -70,38 +71,42 @@ const ImageSliderPopup = ({ images = [], startIndex, onClose }) => {
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
-                src={image?.url || image}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-[300px] xs:h-[700px] object-contain"
-              />
+              <div className="flex justify-center items-center h-full">
+                <img
+                  src={image?.url || image}
+                  alt={`Slide ${index + 1}`}
+                  className="max-h-[80vh] object-contain rounded-xl shadow-xl transition-all duration-500"
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-16 right-12 text-white bg-black/60 hover:bg-black/80 rounded-full w-10 h-10 flex items-center justify-center text-xl z-50"
+          className="absolute w-5 h-5 flex justify-center items-center top-44 xxs:top-40 xs:top-32 sm:top-20 md:top-10 right-5 lg:right-20 text-white bg-black/60 hover:bg-red-600 transition-all p-4 rounded-full text-xl z-50"
           aria-label="Close slider"
         >
           &times;
         </button>
 
+        {/* Navigation Arrows */}
         {images.length > 1 && (
           <>
             <button
               onClick={() => swiperRef.current?.slidePrev()}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-transform duration-300 hover:scale-110"
               aria-label="Previous slide"
             >
-              <LuChevronLeft size={15} />
+              <LuChevronLeft className="w-5 h-5 rounded-full" />
             </button>
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-transform duration-300 hover:scale-110"
               aria-label="Next slide"
             >
-              <LuChevronRight size={15} />
+              <LuChevronRight className="w-5 h-5 rounded-full" />
             </button>
           </>
         )}
@@ -109,5 +114,6 @@ const ImageSliderPopup = ({ images = [], startIndex, onClose }) => {
     </div>
   );
 };
+
 
 export default Card;

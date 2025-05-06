@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://architectusbureau.com/</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://architectusbureau.com/expertise</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://architectusbureau.com/allCategory</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://architectusbureau.com/about</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://architectusbureau.com/people</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://architectusbureau.com/career</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://architectusbureau.com/contact</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project Categories -->
+  <url><loc>https://architectusbureau.com/category/Residential</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Commercial-and-Corporate</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Hospitality-and-Tourism</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Recreational</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Urban-Design-and-Public-Spaces</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Township-and-Urban-Settlement</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Healthcare</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Institutional</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Landscape</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Cultural-and-Religious</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Industrial</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Adaptive-Reuse-and-Renovation</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Conceptual-and-Experimental</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Technology-and-Innovation</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Humanitarian-and-Social</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Climate-Responsive</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://architectusbureau.com/category/Interior</loc><lastmod>2025-05-06</lastmod><priority>0.7</priority></url>
+
+</urlset>
