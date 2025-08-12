@@ -202,7 +202,7 @@ const Contact = () => {
                     <p className="mt-1 text-gray-300/90 text-center xs:text-start">Lucknow, INDIA</p>
                     <div className="mt-2 text-center xs:text-start">
                       <a
-                        href="https://maps.google.com"
+                        href="https://maps.app.goo.gl/hhxXfBhPzyhEBUFi6"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm text-indigo-400 hover:text-indigo-300 transition-colors group"

@@ -131,7 +131,7 @@ const MenuSlide = ({ isOpen, onClose }) => {
               </button>
 
               {/* Navigation links */}
-              <nav className="flex-1 flex flex-col justify-center">
+              <nav className="flex-1 flex flex-col justify-start">
                 <ul className="space-y-2 sm:space-y-4">
                   {menuLinks.map((item, index) => (
                     <motion.li
@@ -152,7 +152,7 @@ const MenuSlide = ({ isOpen, onClose }) => {
               </nav>
 
               {/* Social links */}
-              <div className="pt-4 sm:pt-6 border-t border-gray-200">
+              <div className="pt-0 xxs:pt-4 sm:pt-6 border-t border-gray-200">
                 <ul className="flex items-center py-2 gap-3 sm:gap-4 overflow-x-auto custom-scrollbar w-full">
                   {socialLinks.map((item, index) => (
                     <li key={index}>

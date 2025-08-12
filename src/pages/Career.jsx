@@ -284,7 +284,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import image from "../assets/images/career.jpg";
+import image from "../assets/images/career.webp";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
