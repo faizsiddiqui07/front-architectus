@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { base_url } from "../config/config";
 import scrollTop from "@/helpers/scrollTop";
+import { motion } from "framer-motion";
 
 const CategoryProjectPage = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
+  const [loadedImages, setLoadedImages] = useState({});
   const navigate = useNavigate();
+
+  const handleImageLoad = (index) => {
+    setLoadedImages(prev => ({ ...prev, [index]: true }));
+  };
 
   const getProjects = async () => {
     try {
@@ -45,54 +51,95 @@ const CategoryProjectPage = () => {
     navigate(`/category/${slug}`); 
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
-    <div className="w-full relative top-[65px] sm:top-[73px]">
+    <div className="w-full relative top-16 sm:top-[73px] mb-[73px] bg-gray-950">
       {/* Sticky Header */}
-      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-20">
-        <div className="w-full py-3 sm:py-5 px-4 lg:px-10 border-b gap-3 border-[#7a78789f]">
-          <p className="text-white text-xl md:text-2xl">Projects</p>
+      <motion.div 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="sticky top-16 sm:top-[72px] bg-gray-900/80 backdrop-blur-sm z-20 border-b border-gray-800"
+      >
+        <div className="w-full py-4 px-4 lg:px-10">
+          <h1 className="text-white text-2xl md:text-3xl font-medium tracking-tight">
+            Project
+          </h1>
         </div>
-      </div>
+      </motion.div>
+
       {/* Main Content */}
-      <main className="px-4 lg:px-10">
-        <section className="my-6 mb-36">
+      <main className="px-4 lg:px-10 py-8">
+        <section className="">
           {loading ? (
-            <p className="text-center text-gray-500">Loading...</p>
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-pulse flex flex-col items-center">
+                <div className="w-12 h-12 bg-gray-800 rounded-full mb-4"></div>
+                <p className="text-gray-400">Loading categories...</p>
+              </div>
+            </div>
           ) : error ? (
-            <p className="text-center text-red-500">{error}</p>
+            <div className="bg-red-900/20 border border-red-800 rounded-lg p-4 text-center">
+              <p className="text-red-400">{error}</p>
+            </div>
           ) : groupedCategories.length === 0 ? (
-            <p className="text-center text-gray-500">No categories found.</p>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 text-center">
+              <p className="text-gray-400">No categories found.</p>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
+            >
               {groupedCategories.map((category, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="relative cursor-pointer group"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02 }}
+                  className="relative cursor-pointer group break-inside-avoid"
                   onClick={() => handleCategoryClick(category.slug)}
                 >
-                  <div className="relative shadow-lg rounded-md h-full">
+                  <div className="relative overflow-hidden rounded-xl transition-all duration-300 group-hover:shadow-xl group-hover:shadow-indigo-900/20">
                     <img
                       src={category.projectImage}
                       alt={category.projectType}
-                      className="w-full h-full object-cover rounded-md"
                       loading="lazy"
+                      className={`w-full h-auto rounded-t-xl ${
+                        loadedImages[index] ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onLoad={() => handleImageLoad(index)}
                     />
-                    <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, transparent 65%, black 100%)",
-                  }}
-                ></div>
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-lg sm:text-xl md:text-2xl">
+                    {!loadedImages[index] && (
+                      <div className="absolute inset-0 bg-gray-800 rounded-xl animate-pulse"></div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent rounded-xl"></div>
+                    <div className="absolute bottom-0 left-0 p-3 sm:p-6 w-full">
+                      <h3 className="text-white text-xl sm:text-2xl font-medium tracking-tight transition-all duration-300 group-hover:text-indigo-300">
                         {category.projectType}
-                      </p>
+                      </h3>
                     </div>
+                    <div className="absolute inset-0 border border-gray-800 rounded-xl pointer-events-none group-hover:border-indigo-500/50 transition-all duration-300"></div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </section>
       </main>

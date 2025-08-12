@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from 'react-hot-toast';
+import { motion } from "framer-motion";
 import { base_url } from "../config/config";
+import { FiMail, FiPhone, FiSend } from "react-icons/fi";
 
 const SubscribeCard = () => {
   const [data, setData] = useState({
@@ -14,30 +16,23 @@ const SubscribeCard = () => {
     phone: "",
   });
 
-  const [loading, setLoading] = useState(true); // Loading state for initial render
-  const [submitting, setSubmitting] = useState(false); // Loading state for submission
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); // Set loading to false after 2 seconds
-    }, 400);
-
-    return () => clearTimeout(timer); // Cleanup timeout on unmount
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setData(prev => ({ ...prev, [name]: value }));
   };
 
   const validate = () => {
     let isValid = true;
     const newErrors = { email: "", phone: "" };
 
-    // Email validation
     if (!data.email) {
       newErrors.email = "Email is required";
       isValid = false;
@@ -46,7 +41,6 @@ const SubscribeCard = () => {
       isValid = false;
     }
 
-    // Phone validation
     if (!data.phone) {
       newErrors.phone = "Phone number is required";
       isValid = false;
@@ -61,81 +55,94 @@ const SubscribeCard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validate()) return;
 
-    setSubmitting(true); // Set submitting state to true
-
+    setSubmitting(true);
     try {
-      const response = await axios.post(`${base_url}/api/subscribe`, data, {
-        withCredentials: true,
-      });
-
-      const responseData = response.data;
-      if (responseData.success) {
-        toast.success(responseData.message);
-        setData({ email: "", phone: "" }); // Clear fields on success
+      const response = await axios.post(`${base_url}/api/subscribe`, data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+        setData({ email: "", phone: "" });
       } else {
-        toast.error(responseData.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       toast.error("An unexpected error occurred. Please try again.");
       console.error("Subscription error:", error);
     } finally {
-      setSubmitting(false); // Set submitting state to false after request
+      setSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full h-[330px] rounded-md bg-gray-700 p-4 xs:p-8 flex">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="w-full rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 p-3 sm:p-6 shadow-xl border border-gray-700"
+    >
       {loading ? (
-        <div className="animate-pulse w-full h-full flex flex-col gap-5 items-center justify-center">
-          <div className="h-6 w-3/4 bg-gray-600 rounded"></div> {/* Skeleton for heading */}
-          <div className="h-10 w-full bg-gray-600 rounded-full"></div> {/* Skeleton for email input */}
-          <div className="h-10 w-full bg-gray-600 rounded-full"></div> {/* Skeleton for phone input */}
-          <div className="h-10 w-full bg-gray-600 rounded-full"></div> {/* Skeleton for submit button */}
+        <div className="animate-pulse flex flex-col gap-5">
+          <div className="h-6 w-3/4 bg-gray-700 rounded"></div>
+          <div className="h-12 w-full bg-gray-700 rounded-lg"></div>
+          <div className="h-12 w-full bg-gray-700 rounded-lg"></div>
+          <div className="h-12 w-full bg-gray-700 rounded-lg"></div>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 items-center justify-center">
-          <h1 className="text-white text-[1.2rem] xl:text-[1.3rem] text-center">
-            Stay up to date with the latest Architectus Bureau projects and news.
-          </h1>
-          <form onSubmit={handleSubmit} className="w-full">
-            <div className="mb-4">
-              <input
-                type="email"
-                value={data.email}
-                name="email"
-                placeholder="Enter email"
-                className={`w-full bg-gray-500 rounded-full px-4 py-2 outline-none placeholder:text-white placeholder:text-md text-white ${errors.email ? 'border-2 border-red-500' : ''}`}
-                onChange={handleOnChange}
-              />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+        <div className="flex flex-col gap-6">
+          <h2 className="text-2xl font-bold text-white text-center">
+            Stay Updated
+          </h2>
+          <p className="text-gray-300 text-center">
+            Get the latest Architectus Bureau projects and news delivered to your inbox.
+          </p>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FiMail className="text-gray-400" />
+                </div>
+                <input
+                  type="email"
+                  value={data.email}
+                  name="email"
+                  placeholder="Your email address"
+                  className={`w-full pl-10 pr-4 py-3 bg-gray-700 border ${errors.email ? 'border-red-500' : 'border-gray-600'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-white placeholder-gray-400`}
+                  onChange={handleOnChange}
+                />
+              </div>
+              {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
             </div>
 
-            <div className="mb-4">
-              <input
-                type="tel"
-                value={data.phone}
-                name="phone"
-                placeholder="Enter phone"
-                className={`w-full bg-gray-500 rounded-full px-4 py-2 outline-none placeholder:text-white placeholder:text-md text-white ${errors.phone ? 'border-2 border-red-500' : ''}`}
-                onChange={handleOnChange}
-              />
-              {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+            <div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FiPhone className="text-gray-400" />
+                </div>
+                <input
+                  type="tel"
+                  value={data.phone}
+                  name="phone"
+                  placeholder="Your phone number"
+                  className={`w-full pl-10 pr-4 py-3 bg-gray-700 border ${errors.phone ? 'border-red-500' : 'border-gray-600'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-white placeholder-gray-400`}
+                  onChange={handleOnChange}
+                />
+              </div>
+              {errors.phone && <p className="mt-1 text-sm text-red-400">{errors.phone}</p>}
             </div>
 
             <button
               type="submit"
-              className={`w-full bg-gray-500 rounded-full py-2 outline-none text-white hover:bg-gray-600 ${submitting ? 'cursor-wait' : ''}`}
               disabled={submitting}
+              className={`w-full flex items-center justify-center py-3 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors ${submitting ? 'opacity-75 cursor-not-allowed' : ''}`}
             >
               {submitting ? 'Submitting...' : 'Subscribe'}
+              {!submitting && <FiSend className="ml-2" />}
             </button>
           </form>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -6,29 +6,30 @@ const LongCardProject = ({ to, image, heading, projectType, component }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading process
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 100); 
+    }, 100);
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div  className="mx-auto px-4 lg:px-10 my-10 ">
+    <div className="px-4 lg:px-10 mt-6">
       <h2 className="text-3xl text-white py-4">{heading}</h2>
 
       <div className="w-full flex gap-7">
-        <div data-aos="zoom-in-right" className="w-full md:w-[50%] lg:w-[65%] overflow-hidden rounded-md">
+        <div
+          data-aos="zoom-in-right"
+          className="w-full md:w-[50%] lg:w-[65%] overflow-hidden rounded-md"
+        >
           {loading ? (
-            <div className="h-[330px] w-full bg-gray-700 animate-pulse rounded-md"></div> // Skeleton for image
+            <div className="w-full bg-gray-700 animate-pulse rounded-md"></div> // Skeleton for image
           ) : (
             <Link to={to} onClick={scrollTop}>
-
               <div className="relative">
                 <img
                   src={image}
-                  className="h-[230px] sm:h-[330px] w-full object-cover hover:scale-105 transition-all duration-300 "
+                  className="h-[230px] xs:h-[260px] sm:h-[360px] w-full object-cover hover:scale-105 transition-all duration-300 "
                   alt={`Project image for ${heading}`}
                 />
                 <div
@@ -46,10 +47,11 @@ const LongCardProject = ({ to, image, heading, projectType, component }) => {
           )}
         </div>
 
-        <div data-aos="zoom-in-left" className="w-full md:w-[50%] lg:w-[35%] hidden md:block">
-         
-            {component}
-          
+        <div
+          data-aos="zoom-in-left"
+          className="w-full md:w-[50%] lg:w-[35%] hidden md:block"
+        >
+          {component}
         </div>
       </div>
     </div>

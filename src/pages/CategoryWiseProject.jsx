@@ -3,34 +3,8 @@ import axios from "axios";
 import Card from "../components/Card";
 import { base_url } from "../config/config";
 import { Link, useParams } from "react-router-dom";
-
-// Reusable Dropdown component
-// const Dropdown = ({ label, items, selected, onSelect }) => (
-//   <Menu as="div" className="relative w-[300px] inline-block text-left">
-//     <MenuButton className="flex justify-between w-full gap-x-1.5 bg-white px-5 py-2 text-sm font-light text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 rounded-full">
-//       {selected || label}
-//       <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
-//     </MenuButton>
-//     <MenuItems className="absolute right-0 z-10 mt-2 w-full max-h-64 overflow-y-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-//       <div className="py-1">
-//         {items.map((item, index) => (
-//           <MenuItem key={index}>
-//             {({ active }) => (
-//               <button
-//                 onClick={() => onSelect(item)}
-//                 className={`${
-//                   active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-//                 } block px-4 py-2 text-sm w-full text-left`}
-//               >
-//                 {item}
-//               </button>
-//             )}
-//           </MenuItem>
-//         ))}
-//       </div>
-//     </MenuItems>
-//   </Menu>
-// );
+import { motion } from "framer-motion";
+import scrollTop from "@/helpers/scrollTop";
 
 const categoryDescriptions = {
   Residential: [
@@ -744,64 +718,107 @@ const CategoryWiseProject = () => {
 
   useEffect(() => {
     getSingleCategoryProjects();
+    scrollTop();
   }, [params.slug]);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   const renderSkeleton = () => (
-    <div className="w-full flex flex-wrap justify-center gap-6">
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
       {[...Array(6)].map((_, index) => (
-        <div key={index} className="w-full sm:w-[48%] xl:w-[31.5%]">
-          <div className="animate-pulse">
-            <div className="h-60 bg-gray-700 rounded-md mb-4"></div>
-          </div>
-        </div>
+        <motion.div
+          key={index}
+          variants={itemVariants}
+          className="break-inside-avoid"
+        >
+          <div className="animate-pulse bg-gray-800 rounded-xl h-64"></div>
+        </motion.div>
       ))}
     </div>
   );
 
   return (
-    <div className="w-full relative top-[65px] sm:top-[73px] bg-[#0f0f0f] text-white">
+    <div className="w-full relative top-16 sm:top-[73px] mb-[73px] bg-gray-950 min-h-screen">
       {/* Sticky Header */}
-      <div className="sticky top-[64px] sm:top-[72px] bg-[#1a1a1a] border-t border-[#3939399f] z-20">
-        <div className="w-full py-4 px-4 lg:px-10 border-b border-[#7a78789f]">
-          <p className="text-xl md:text-2xl">
-            <Link to="/allCategory" className="text-gray-300 hover:underline">
+      <motion.div 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="sticky top-16 sm:top-[72px] bg-gray-900/80 backdrop-blur-sm z-20 border-b border-gray-800"
+      >
+        <div className="w-full py-4 px-4 lg:px-10">
+          <h1 className="text-white text-xl md:text-2xl font-medium tracking-tight">
+            <Link to="/allCategory" className="text-gray-300 hover:text-indigo-300 transition-colors">
               Projects
             </Link>{" "}
-            / {projects[0]?.projectType}
-          </p>
+            <span className="text-gray-400">/</span> {projects[0]?.projectType}
+          </h1>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Description */}
-      <main className="px-4 lg:px-10">
-        <section className="my-6">
+      {/* Main Content */}
+      <main className="px-4 lg:px-10 py-8">
+        {/* Description Section */}
+        <motion.section 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 bg-gray-900/50 border border-gray-800 rounded-xl p-6"
+        >
           {Array.isArray(categoryDescription) ? (
             categoryDescription.map((line, idx) => (
-              <p key={idx} className={line.size}>
+              <p key={idx} className={`${line.size} ${idx !== 0 ? '' : ''}`}>
                 {line.text}
               </p>
             ))
           ) : (
-            <p className="text-gray-300 my-4">{categoryDescription}</p>
+            <p className="text-gray-300">{categoryDescription}</p>
           )}
-        </section>
+        </motion.section>
 
         {/* Project Cards */}
-        <section className="my-6 mb-36">
+        <section className="">
           {loading ? (
             renderSkeleton()
           ) : error ? (
-            <p className="text-center text-red-500">{error}</p>
-          ) : projects.length === 0 ? (
-            <p className="text-center text-gray-500">No projects found.</p>
-          ) : (
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-              {projects.map((project) => (
-                <div key={project._id} className="break-inside-avoid mb-4">
-                  <Card project={project} />
-                </div>
-              ))}
+            <div className="bg-red-900/20 border border-red-800 rounded-lg p-4 text-center">
+              <p className="text-red-400">{error}</p>
             </div>
+          ) : projects.length === 0 ? (
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 text-center">
+              <p className="text-gray-400">No projects found.</p>
+            </div>
+          ) : (
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              className="columns-1 sm:columns-2 lg:columns-3 gap-3 md:gap-6 space-y-3 md:space-y-6"
+            >
+              {projects.map((project) => (
+                <motion.div
+                  key={project._id}
+                  variants={itemVariants}
+                  className="break-inside-avoid"
+                >
+                  <Card project={project} />
+                </motion.div>
+              ))}
+            </motion.div>
           )}
         </section>
       </main>
