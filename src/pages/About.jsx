@@ -60,9 +60,9 @@ const About = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={fadeIn} className="mb-10">
+          <motion.div variants={fadeIn} className="mb-6">
             <motion.p
-              className="max-w-7xl mx-auto text-center text-lg text-gray-300 leading-relaxed"
+              className="w-full max-w-7xl mx-auto text-center text-base text-gray-300 "
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
@@ -79,8 +79,8 @@ const About = () => {
           </motion.div>
 
           {/* Philosophy Section */}
-          <motion.div variants={fadeIn} className="mb-10 sm:mb-16">
-            <p className="text-lg text-gray-300 leading-relaxed text-center">
+          <motion.div variants={fadeIn} className="mb-8 sm:mb-10">
+            <p className="text-base text-gray-300 leading-relaxed text-center">
               At its core,{" "}
               <span className="font-semibold text-white">
                 Architectus Bureau
@@ -90,10 +90,12 @@ const About = () => {
               the firm embraces an experimental approach that challenges
               conventions while maintaining harmony with the environment.
             </p>
-            <p className="text-xl text-gray-300 leading-relaxed mb-8 text-center"> The
-              firm’s design philosophy revolves around innovation fused with
+            <p className="text-base text-gray-300 leading-relaxed mb-8 text-center">
+              {" "}
+              The firm’s design philosophy revolves around innovation fused with
               cultural relevance, ensuring that every project tells a unique
-              story. Key aspects of our approach include:</p>
+              story. Key aspects of our approach include:
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
               {[
                 {
@@ -134,9 +136,10 @@ const About = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeIn} className="mb-10 sm:mb-16">
-            <p className="text-lg text-gray-300 leading-relaxed text-center mb-8">
-             Architectus Bureau is committed to leaving a minimal ecological footprint. Our projects emphasize:
+          <motion.div variants={fadeIn} className="mb-8 sm:mb-10">
+            <p className="text-base text-gray-300 leading-relaxed text-center mb-8">
+              Architectus Bureau is committed to leaving a minimal ecological
+              footprint. Our projects emphasize:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
               {[
@@ -154,7 +157,7 @@ const About = () => {
                   icon: <FaLeaf className="text-3xl text-green-400" />,
                   title: "Biodiversity Promotion",
                   desc: "Designs that incorporate green spaces, urban forests, and water conservation techniques.",
-                }
+                },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -174,9 +177,11 @@ const About = () => {
           </motion.div>
 
           {/* Team Section */}
-          <motion.div variants={fadeIn} className="mb-10 sm:mb-16">
-            <p className="text-lg text-gray-300 leading-relaxed mb-8 text-center">
-              Under the dynamic leadership of Khaan Aamir and Kalpana Saini, the firm thrives on a collaborative culture. Architectus Bureau brings together a multidisciplinary team of:
+          <motion.div variants={fadeIn} className="mb-8 sm:mb-10">
+            <p className="text-base text-gray-300 leading-relaxed mb-8 text-center">
+              Under the dynamic leadership of Khaan Aamir and Kalpana Saini, the
+              firm thrives on a collaborative culture. Architectus Bureau brings
+              together a multidisciplinary team of:
             </p>
             <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -198,8 +203,13 @@ const About = () => {
 
           {/* Closing Section */}
           <motion.div variants={fadeIn} className="text-center">
-            <p className="text-lg text-gray-300 leading-relaxed max-w-7xl mx-auto">
-              Architectus Bureau continues to evolve as a trendsetter in architecture, pushing boundaries in the realms of smart cities, biophilic design, and sustainable urban development. With a strong foundation built on innovation and integrity, the firm remains dedicated to transforming spaces into icons of living art for generations to come.
+            <p className="text-base text-gray-300 leading-relaxed max-w-7xl mx-auto">
+              Architectus Bureau continues to evolve as a trendsetter in
+              architecture, pushing boundaries in the realms of smart cities,
+              biophilic design, and sustainable urban development. With a strong
+              foundation built on innovation and integrity, the firm remains
+              dedicated to transforming spaces into icons of living art for
+              generations to come.
             </p>
           </motion.div>
         </motion.div>
