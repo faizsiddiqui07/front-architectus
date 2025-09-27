@@ -8,27 +8,27 @@ export const socialLinks = [
    },
    {
       icon: FaXTwitter,
-      url: "#"
+      url: "https://x.com/Architectu88516"
    },
    {
       icon: FaWhatsapp,
-      url: "#"
+      url: "https://wa.me/919119897774?text=Hello, I’m looking for premium architectural solutions. Can you guide me further?"
    },
    {
       icon: FaInstagram,
-      url: "#"
+      url: "https://www.instagram.com/architectus_bureau/reels/?hl=de"
    },
    {
       icon: FaThreads,
-      url: "#"
+      url: "https://www.threads.com/@architectus_bureau"
    },
    {
       icon: FaYoutube,
-      url: "#"
+      url: "https://www.youtube.com/@architectusbureau"
    },
    {
       icon: FaPinterest,
-      url: "#"
+      url: "https://in.pinterest.com/architectusb/"
    },
    {
       icon: FaLinkedin,
