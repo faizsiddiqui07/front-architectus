@@ -63,7 +63,7 @@ const People = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-10 sm:md-12 md:mb-16 text-center"
         >
           <div className="inline-flex items-center justify-center mb-4">
             <div className="w-12 h-px bg-amber-500 mr-4"></div>
@@ -72,15 +72,15 @@ const People = () => {
             </span>
             <div className="w-12 h-px bg-amber-500 ml-4"></div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-[27px] xxs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Visionary Architects
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base xxs:text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Meet the innovative minds shaping the future of architectural design
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 mb-24">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-16">
           <LeaderCard
             image={SirImage}
             name="Khaan Aamir"
@@ -109,7 +109,7 @@ const People = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-8 sm:mb-12 md:mb-16"
         >
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center mb-4">
@@ -119,10 +119,10 @@ const People = () => {
               </span>
               <div className="w-12 h-px bg-amber-500 ml-4"></div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-[27px] xxs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Signature <span className="text-amber-500">Projects</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base xxs:text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
               Explore our portfolio of innovative architectural solutions
             </p>
           </div>
@@ -150,7 +150,7 @@ const People = () => {
               {projects.map((project, index) => (
                 <SwiperSlide key={index}>
                   <Link to={project.link} className="block group">
-                    <div className="relative w-full h-[90vh] overflow-hidden">
+                    <div className="relative w-full h-[55vh] xxs:h-[60vh] sm:h-[70vh] md:h-[90vh] overflow-hidden">
                       <motion.img
                         src={project.image}
                         alt={`Slide ${index + 1}`}
@@ -230,15 +230,15 @@ const People = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Start Your Project?
           </h3>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             Let's collaborate to create something extraordinary together
           </p>
           <Link
             to="/contact"
-            className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+            className="px-5 sm:px-8 py-3 sm:py-4 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
           >
             Get in Touch
           </Link>
@@ -314,13 +314,13 @@ const LeaderCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
           <motion.div
             className="transform transition-all duration-500"
             animate={{ y: isHovered ? -20 : 0 }}
           >
-            <h2 className="text-3xl font-bold mb-2">{name}</h2>
-            <p className="text-amber-400 font-medium">{position}</p>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2">{name}</h2>
+            <p className="text-sm sm:text-base text-amber-400 font-medium">{position}</p>
           </motion.div>
 
           <AnimatePresence>
@@ -332,7 +332,7 @@ const LeaderCard = ({
                 transition={{ duration: 0.5 }}
                 className="overflow-hidden"
               >
-                <p className="text-gray-200 mb-6 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-200 mb-6 leading-relaxed">
                   {description}
                 </p>
                 

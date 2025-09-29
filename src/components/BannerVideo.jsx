@@ -76,6 +76,7 @@ const BannerVideo = () => {
                       muted
                       loop
                       playsInline
+                      preload="auto"
                     ></video>
                     <div
                       className="absolute inset-0"

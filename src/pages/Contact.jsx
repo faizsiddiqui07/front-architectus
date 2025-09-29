@@ -10,15 +10,22 @@ import {
   FiMessageSquare,
   FiSend,
 } from "react-icons/fi";
+import axios from "axios";
+import { base_url } from "@/config/config";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({
+    loading: false,
+    success: "",
+    error: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,14 +35,50 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.email ||
+      !formData.message
+    ) {
+      setStatus({
+        loading: false,
+        success: "",
+        error: "All fields are required",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Submit logic here
-    setTimeout(() => {
-      setIsSubmitting(false);
-      // Show success message
-    }, 1500);
+    setStatus({ loading: true, success: "", error: "" });
+    if (!validateForm()) return;
+    try {
+      const res = await axios.post(`${base_url}/api/requestQuery`, formData);
+      if (res.data.success) {
+        setStatus({
+          loading: false,
+          success: "Message sent successfully!",
+          error: "",
+        });
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        setStatus({
+          loading: false,
+          success: "",
+          error: res.data.message || "Failed",
+        });
+      }
+    } catch (err) {
+      setStatus({
+        loading: false,
+        success: "",
+        error: err.response?.data?.message || "Server error",
+      });
+    }
   };
 
   return (
@@ -84,11 +127,29 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                   placeholder="Full Name"
                 />
               </div>
+
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  placeholder="Phone Number"
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -102,7 +163,6 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                   placeholder="your@email.com"
                 />
@@ -120,21 +180,20 @@ const Contact = () => {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                   placeholder="Your message here..."
                 />
               </div>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={status.loading}
                 className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all flex items-center justify-center ${
-                  isSubmitting
+                  status.loading
                     ? "bg-indigo-800 cursor-not-allowed"
                     : "bg-indigo-600 hover:bg-indigo-700"
                 }`}
               >
-                {isSubmitting ? (
+                {status.loading ? (
                   <>
                     <svg
                       className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
@@ -162,11 +221,19 @@ const Contact = () => {
                   "Send Message"
                 )}
               </button>
+              {status.success && (
+                <p className="text-green-400 mt-2 text-center">
+                  {status.success}
+                </p>
+              )}
+              {status.error && (
+                <p className="text-red-400 mt-2 text-center">{status.error}</p>
+              )}
             </form>
           </motion.div>
 
           {/* Contact Information */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -199,7 +266,9 @@ const Contact = () => {
                     <h3 className="text-lg font-semibold text-white text-center xs:text-start">
                       Our Office
                     </h3>
-                    <p className="mt-1 text-gray-300/90 text-center xs:text-start">Lucknow, INDIA</p>
+                    <p className="mt-1 text-gray-300/90 text-center xs:text-start">
+                      Lucknow, INDIA
+                    </p>
                     <div className="mt-2 text-center xs:text-start">
                       <a
                         href="https://maps.app.goo.gl/hhxXfBhPzyhEBUFi6"
@@ -262,7 +331,9 @@ const Contact = () => {
                   <FiMail className="h-5 w-5 text-indigo-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white text-center xs:text-start">Email Us</h3>
+                  <h3 className="text-lg font-semibold text-white text-center xs:text-start">
+                    Email Us
+                  </h3>
                   <a
                     href="mailto:architectusbureau@gmail.com"
                     className="mt-1 text-gray-300/90 hover:text-indigo-400 transition-colors flex items-center gap-2 group"

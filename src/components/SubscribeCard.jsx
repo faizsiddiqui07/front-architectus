@@ -80,7 +80,7 @@ const SubscribeCard = () => {
       animate={{ opacity: 1, y: 0 }}
       className="w-full rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 p-3 sm:p-6 shadow-xl border border-gray-700"
     >
-      {loading ? (
+      {loading ? ( 
         <div className="animate-pulse flex flex-col gap-5">
           <div className="h-6 w-3/4 bg-gray-700 rounded"></div>
           <div className="h-12 w-full bg-gray-700 rounded-lg"></div>

@@ -52,7 +52,7 @@ const About = () => {
       </div>
 
       {/* Content Section */}
-      <div className="px-6 lg:px-12 py-16 sm:py-20 max-w-7xl mx-auto">
+      <div className="px-6 lg:px-12 py-4 sm:py-8 md:py-12 max-w-7xl mx-auto">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -60,8 +60,8 @@ const About = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Introduction */}
-          <motion.div variants={fadeIn} className="mb-16 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <motion.div variants={fadeIn} className="mb-10 sm:mb-12 md:mb-16 text-center">
+            <h2 className="text-2xl xxs:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4">
               <span className="text-amber-500">Architectus Bureau</span>
             </h2>
             <div className="w-24 h-1 bg-amber-500 mx-auto mb-8"></div>
@@ -76,27 +76,27 @@ const About = () => {
           </motion.div>
 
           {/* Philosophy Section */}
-          <motion.div variants={fadeIn} className="mb-16">
+          <motion.div variants={fadeIn} className="mb-10 sm:mb-12 md:mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
                   Our Design Philosophy
                 </h3>
                 <div className="w-16 h-1 bg-amber-500 mb-6"></div>
-                <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                <p className="text-lg text-gray-300 leading-relaxed mb-6 text-justify">
                   At its core, Architectus Bureau believes architecture is more
                   than building structures—it is about crafting experiences.
                   Guided by a commitment to design excellence, the firm embraces
                   an experimental approach that challenges conventions while
                   maintaining harmony with the environment.
                 </p>
-                <p className="text-lg text-gray-300 leading-relaxed">
+                <p className="text-lg text-gray-300 leading-relaxed text-justify">
                   The firm’s design philosophy revolves around innovation fused
                   with cultural relevance, ensuring that every project tells a
                   unique story. Key aspects of our approach include:
                 </p>
               </div>
-              <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 h-full">
+              <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-4 sm:p-8 h-full">
                 <h4 className="text-xl font-semibold text-white mb-6 text-center">
                   Core Design Principles
                 </h4>
@@ -125,7 +125,7 @@ const About = () => {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      className={`bg-gradient-to-r ${item.color} border border-gray-800 rounded-xl p-5 transition-all duration-300 hover:border-amber-500/30`}
+                      className={`bg-gradient-to-r ${item.color} border border-gray-800 rounded-xl p-3 sm:p-5 transition-all duration-300 hover:border-amber-500/30`}
                       whileHover={{ y: -3 }}
                     >
                       <h5 className="text-lg font-semibold text-white mb-2">
@@ -215,7 +215,7 @@ const About = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
                   Collaborative Leadership
                 </h3>
                 <div className="w-16 h-1 bg-amber-500 mb-6"></div>
@@ -229,9 +229,9 @@ const About = () => {
           {/* Closing Section */}
           <motion.div
             variants={fadeIn}
-            className="text-center py-12 px-8 bg-gray-900/50 border border-gray-800 rounded-2xl"
+            className="text-center py-8 sm:py-12 px-5 sm:px-8 bg-gray-900/50 border border-gray-800 rounded-2xl"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white ">
               Shaping the Future of Architecture
             </h3>
             <div className="w-16 h-1 bg-amber-500 mx-auto mb-8"></div>
